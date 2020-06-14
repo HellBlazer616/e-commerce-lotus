@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { BackTop } from 'antd';
 import AsideMenuComponent from '../components/AsideMenuComponent';
 import NavComponent from '../components/NavComponent';
-import CartComponent from '../components/CartComponent';
 import CardComponent from '../components/CardComponent';
-import './App.less';
+import { CartOpenContext } from '../CartOpenContext';
 
-function App() {
-  const [visible, setVisible] = useState(false);
-
-  const showCart = () => {
-    setVisible(true);
-  };
+const Product = () => {
+  const { visible, setVisible } = useContext(CartOpenContext);
 
   return (
     <Wrapper>
-      <NavComponent showCart={showCart} />
+      <NavComponent visible={visible} setVisible={setVisible} />
       <Content>
         <AsideMenuComponent />
         <Row>
@@ -23,14 +19,15 @@ function App() {
           <CardComponent />
           <CardComponent />
           <CardComponent />
+          <CardComponent />
+          <CardComponent />
         </Row>
       </Content>
-      <CartComponent visible={visible} setVisible={setVisible} />
+
+      <BackTop />
     </Wrapper>
   );
-}
-
-export default App;
+};
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -38,11 +35,14 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
 `;
 const Row = styled.div`
   display: flex;
   justify-content: space-around;
   flex-grow: 1;
+  flex-wrap: wrap;
 `;
+
+export default Product;

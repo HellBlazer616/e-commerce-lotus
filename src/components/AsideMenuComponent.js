@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Menu } from 'antd';
 import {
   MailOutlined,
@@ -10,23 +10,28 @@ const { SubMenu } = Menu;
 
 const AsideMenuComponent = () => {
   const [current, setCurrent] = useState({});
+  const menuRef = useRef();
 
   const handleClick = (e) => {
     console.log('click ', e);
     setCurrent({
       current: e.key,
     });
+    console.log(menuRef.current);
   };
 
   return (
     <aside>
       <Menu
         onClick={handleClick}
-        style={{ width: 256 }}
         // defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub2']}
+
         mode="inline"
+        style={{ position: 'sticky', top: 0, width: 200 }}
+        ref={menuRef}
+        // inlineCollapsed
       >
+        <Menu.Item key="1">Option 1</Menu.Item>
         <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
           <Menu.ItemGroup key="g1" title="Item 1">
             <Menu.Item key="1">Option 1</Menu.Item>
