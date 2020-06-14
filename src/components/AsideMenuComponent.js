@@ -25,20 +25,21 @@ const AsideMenuComponent = () => {
   };
 
   useEffect(() => {
-    if (width > 500) {
+    if (width > 500 && isCollapse) {
       setIsCollapse(false);
-      return;
+      console.log('render');
+    } else if (width < 500 && !isCollapse) {
+      console.log('render');
+      setIsCollapse(true);
     }
-
-    setIsCollapse(true);
-  }, [width]);
+  }, [width, isCollapse]);
 
   return (
     <aside>
       <Menu
         onClick={handleClick}
         // defaultSelectedKeys={['1']}
-
+        collapsible
         mode="inline"
         style={{ position: 'sticky', top: 0 }}
         ref={menuRef}

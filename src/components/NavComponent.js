@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Input, Dropdown, Button, Tooltip, Badge } from 'antd';
+import { Menu, Input, Dropdown, Button, Tooltip, Badge, Select } from 'antd';
 import { Link } from '@reach/router';
 import {
   AppstoreOutlined,
@@ -12,6 +12,7 @@ import CartComponent from './CartComponent';
 
 const { SubMenu } = Menu;
 const { Search } = Input;
+const { Option } = Select;
 
 const NavComponent = ({ visible, setVisible }) => {
   const [current, setCurrent] = useState({});
@@ -30,26 +31,6 @@ const NavComponent = ({ visible, setVisible }) => {
   const handleCategoryClick = (e) => {
     console.log('click ', e);
   };
-
-  const HoverMenu = (
-    <Menu
-      key="menu"
-      icon={<AppstoreOutlined />}
-      title="Grocery"
-      onClick={handleCategoryClick}
-    >
-      <Menu.Item key="1">1st Menu Item</Menu.Item>
-      <Menu.Item key="2">Option 6</Menu.Item>
-      <Menu.Item key="3">Option 5</Menu.Item>
-      <Menu.Item key="4">Option 6</Menu.Item>
-      <Menu.Item key="5">Option 5</Menu.Item>
-      <Menu.Item key="6">Option 6</Menu.Item>
-      <Menu.Item key="7">Option 5</Menu.Item>
-      <Menu.Item key="8">Option 6</Menu.Item>
-      <Menu.Item key="9">Option 5</Menu.Item>
-      <Menu.Item key="10">Option 6</Menu.Item>
-    </Menu>
-  );
 
   return (
     <>
@@ -81,23 +62,30 @@ const NavComponent = ({ visible, setVisible }) => {
         </StyledMenu>
 
         <div className="bottom-nav">
-          <Dropdown.Button
-            size="large"
-            onClick={handleCategoryClick}
-            overlay={HoverMenu}
+          <Select
+            defaultValue="All Category"
+            style={{ width: 120 }}
+            onChange={handleCategoryClick}
             className="bottom-nav__button"
-            icon={<CaretDownOutlined />}
-            key="category"
+            size="large"
           >
-            Categories
-          </Dropdown.Button>
+            <Option value="all-category">All Categories</Option>
+            <Option value="fruit">Fruit</Option>
+            <Option value="vegetable">Vegetable</Option>
+          </Select>
           <StyledSearch
             placeholder="input search text"
             enterButton="Search"
             size="large"
             onSearch={(value) => console.log(value)}
           />
-          <div onClick={showCart} style={{ margin: '0 20px' }}>
+          <button
+            onClick={showCart}
+            style={{ margin: '0 20px' }}
+            type="button"
+            aria-label="cart-button"
+            className="cart-button"
+          >
             <Badge count={0} showZero>
               <Tooltip title="open cart">
                 <Button
@@ -112,7 +100,7 @@ const NavComponent = ({ visible, setVisible }) => {
                 />
               </Tooltip>
             </Badge>
-          </div>
+          </button>
         </div>
       </Nav>
       <CartComponent visible={visible} setVisible={setVisible} />
@@ -133,6 +121,10 @@ const Nav = styled.nav`
     & .bottom-nav__button {
       margin: 0 10px;
     }
+  }
+  & .cart-button {
+    border: none;
+    background: inherit;
   }
 `;
 
