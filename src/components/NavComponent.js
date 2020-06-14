@@ -28,7 +28,7 @@ const NavComponent = ({ showCart }) => {
 
   const HoverMenu = (
     <Menu
-      key="mail"
+      key="menu"
       icon={<AppstoreOutlined />}
       title="Grocery"
       onClick={handleCategoryClick}
