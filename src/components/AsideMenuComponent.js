@@ -1,16 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Menu } from 'antd';
 import {
   MailOutlined,
   AppstoreOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
+import useWindowDimension from '../utils/customHooks/useWindowDimension';
 
 const { SubMenu } = Menu;
 
 const AsideMenuComponent = () => {
   const [current, setCurrent] = useState({});
+  const [isCollapse, setIsCollapse] = useState(false);
   const menuRef = useRef();
+  const { height, width } = useWindowDimension();
 
   const handleClick = (e) => {
     console.log('click ', e);
@@ -18,7 +21,17 @@ const AsideMenuComponent = () => {
       current: e.key,
     });
     console.log(menuRef.current);
+    console.log(width, height);
   };
+
+  useEffect(() => {
+    if (width > 500) {
+      setIsCollapse(false);
+      return;
+    }
+
+    setIsCollapse(true);
+  }, [width]);
 
   return (
     <aside>
@@ -27,9 +40,9 @@ const AsideMenuComponent = () => {
         // defaultSelectedKeys={['1']}
 
         mode="inline"
-        style={{ position: 'sticky', top: 0, width: 200 }}
+        style={{ position: 'sticky', top: 0 }}
         ref={menuRef}
-        // inlineCollapsed
+        inlineCollapsed={isCollapse}
       >
         <Menu.Item key="1">Option 1</Menu.Item>
         <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">

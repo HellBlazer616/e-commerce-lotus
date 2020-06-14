@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Input, Dropdown, Button, Tooltip } from 'antd';
+import { Menu, Input, Dropdown, Button, Tooltip, Badge } from 'antd';
 import { Link } from '@reach/router';
 import {
   AppstoreOutlined,
@@ -78,20 +78,6 @@ const NavComponent = ({ visible, setVisible }) => {
           >
             <Menu.Item key="7">Login</Menu.Item>
           </SubMenu>
-          <Menu.Item key="cart" style={{ float: 'right' }} onClick={showCart}>
-            <Tooltip title="open cart">
-              <Button
-                type="primary"
-                shape="circle"
-                icon={
-                  <ShoppingCartOutlined
-                    style={{ fontSize: '25px', margin: 'auto' }}
-                  />
-                }
-                size="large"
-              />
-            </Tooltip>
-          </Menu.Item>
         </StyledMenu>
 
         <div className="bottom-nav">
@@ -111,6 +97,22 @@ const NavComponent = ({ visible, setVisible }) => {
             size="large"
             onSearch={(value) => console.log(value)}
           />
+          <div onClick={showCart} style={{ margin: '0 20px' }}>
+            <Badge count={0} showZero>
+              <Tooltip title="open cart">
+                <Button
+                  type="primary"
+                  shape="circle"
+                  icon={
+                    <ShoppingCartOutlined
+                      style={{ fontSize: '25px', margin: 'auto' }}
+                    />
+                  }
+                  size="large"
+                />
+              </Tooltip>
+            </Badge>
+          </div>
         </div>
       </Nav>
       <CartComponent visible={visible} setVisible={setVisible} />
