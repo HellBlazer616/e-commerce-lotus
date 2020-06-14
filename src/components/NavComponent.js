@@ -57,11 +57,11 @@ const NavComponent = ({ showCart }) => {
         <Menu.Item key="icon" icon={<AppstoreOutlined />}>
           Brand Icon
         </Menu.Item>
-        <Menu.Item key="five" icon={<AppstoreOutlined />}>
-          Navigation Five
+        <Menu.Item key="one" icon={<AppstoreOutlined />}>
+          Navigation one
         </Menu.Item>
-        <Menu.Item key="six" icon={<AppstoreOutlined />}>
-          Navigation Six
+        <Menu.Item key="two" icon={<AppstoreOutlined />}>
+          Navigation two
         </Menu.Item>
         <Menu.Item
           key="avatar"
@@ -70,7 +70,7 @@ const NavComponent = ({ showCart }) => {
         >
           User avatar will be here
         </Menu.Item>
-        <Menu.Item key="seven" style={{ float: 'right' }} onClick={showCart}>
+        <Menu.Item key="cart" style={{ float: 'right' }} onClick={showCart}>
           <Tooltip title="open cart">
             <Button
               type="primary"
