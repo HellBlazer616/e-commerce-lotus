@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import { Menu, Input, Dropdown } from 'antd';
+import { Menu, Input, Dropdown, Button, Tooltip } from 'antd';
 
-import { AppstoreOutlined, CaretDownOutlined } from '@ant-design/icons';
+import {
+  AppstoreOutlined,
+  CaretDownOutlined,
+  ShoppingCartOutlined,
+} from '@ant-design/icons';
 import { RiMenu2Line } from 'react-icons/ri';
 import styled from '@emotion/styled';
 
 const { SubMenu } = Menu;
 const { Search } = Input;
 
-const NavComponent = () => {
+const NavComponent = ({ showCart }) => {
   const [current, setCurrent] = useState({});
 
-  const handleClick = (e) => {
+  const handleNavClick = (e) => {
     console.log('click ', e);
     setCurrent({
       current: e.key,
     });
   };
+
   const handleCategoryClick = (e) => {
     console.log('click ', e);
   };
@@ -44,7 +49,7 @@ const NavComponent = () => {
   return (
     <Nav>
       <StyledMenu
-        onClick={handleClick}
+        onClick={handleNavClick}
         selectedKeys={[current]}
         mode="horizontal"
         overflowedIndicator={<RiMenu2Line />}
@@ -65,12 +70,19 @@ const NavComponent = () => {
         >
           User avatar will be here
         </Menu.Item>
-        <Menu.Item
-          key="seven"
-          icon={<AppstoreOutlined />}
-          style={{ float: 'right' }}
-        >
-          Cart will be here
+        <Menu.Item key="seven" style={{ float: 'right' }} onClick={showCart}>
+          <Tooltip title="open cart">
+            <Button
+              type="primary"
+              shape="circle"
+              icon={
+                <ShoppingCartOutlined
+                  style={{ fontSize: '25px', margin: 'auto' }}
+                />
+              }
+              size="large"
+            />
+          </Tooltip>
         </Menu.Item>
       </StyledMenu>
 

@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import AsideMenuComponent from '../components/AsideMenuComponent';
 import NavComponent from '../components/NavComponent';
-import CarousalComponent from '../components/CarousalComponent';
+import CartComponent from '../components/CartComponent';
 import './App.less';
 
 function App() {
+  const [visible, setVisible] = useState(false);
+
+  const showCart = () => {
+    setVisible(true);
+  };
+
   return (
     <Wrapper>
-      <NavComponent />
+      <NavComponent showCart={showCart} />
       <AsideMenuComponent />
+      <CartComponent visible={visible} setVisible={setVisible} />
     </Wrapper>
   );
 }
