@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Button } from 'antd';
+import { navigate } from '@reach/router';
 import OrderComponent from '../components/OrderComponent';
 import NavComponent from '../components/NavComponent';
 import FooterComponent from '../components/FooterComponent';
+import InfoDrawerComponent from '../components/InfoDrawerComponent';
 
 const ShowCart = () => {
+  const [visible, setVisible] = useState(false);
+  const showInfoCart = () => {
+    setVisible(!visible);
+  };
+  const redirectToProduct = () => {
+    navigate('product/all');
+  };
   return (
     <Wrapper>
       <NavComponent />
@@ -25,12 +34,16 @@ const ShowCart = () => {
             </h2>
           </div>
           <div className="order__buttons">
-            <Button size="large" type="primary">
+            <Button size="large" type="primary" onClick={redirectToProduct}>
               Continue Shopping
             </Button>
             <Button size="large" type="primary" danger>
               Checkout
             </Button>
+            <Button size="large" type="primary" onClick={showInfoCart}>
+              Delivery Information
+            </Button>
+            <InfoDrawerComponent onClose={showInfoCart} visible={visible} />
           </div>
         </div>
       </div>
@@ -89,6 +102,14 @@ const Wrapper = styled.div`
       justify-content: space-around;
       flex-basis: 100%;
       margin-bottom: 3rem;
+
+      button {
+        margin: 1rem;
+      }
+
+      @media only screen and (max-width: 767px) {
+        flex-direction: column;
+      }
     }
 
     & .order__price {

@@ -54,6 +54,9 @@ const NavComponent = () => {
           <Menu.Item key="login" icon={<AppstoreOutlined />}>
             <Link to="/login">Login</Link>
           </Menu.Item>
+          <Menu.Item key="cart" icon={<AppstoreOutlined />}>
+            <Link to="/cart">Show Cart</Link>
+          </Menu.Item>
 
           <SubMenu
             key="avatar"

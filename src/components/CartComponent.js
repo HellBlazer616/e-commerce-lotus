@@ -1,11 +1,16 @@
 import React from 'react';
 import { Drawer, Button } from 'antd';
 import styled from '@emotion/styled';
+import { navigate } from '@reach/router';
 import OrderComponent from './OrderComponent';
 
 const CartComponent = ({ visible, setVisible }) => {
   const onClose = () => {
     setVisible(!visible);
+  };
+
+  const redirectCart = () => {
+    navigate('/cart');
   };
 
   return (
@@ -29,8 +34,8 @@ const CartComponent = ({ visible, setVisible }) => {
           </h2>
         </div>
         <div className="order__buttons">
-          <Button size="large" type="primary">
-            Continue Shopping
+          <Button size="large" type="primary" onClick={redirectCart}>
+            View Cart
           </Button>
           <Button size="large" type="primary" danger>
             Checkout
