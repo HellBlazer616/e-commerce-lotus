@@ -14,8 +14,9 @@ const { SubMenu } = Menu;
 const { Search } = Input;
 const { Option } = Select;
 
-const NavComponent = ({ visible, setVisible }) => {
+const NavComponent = () => {
   const [current, setCurrent] = useState({});
+  const [visible, setVisible] = useState(false);
 
   const handleNavClick = (e) => {
     console.log('click ', e);
@@ -48,7 +49,7 @@ const NavComponent = ({ visible, setVisible }) => {
             <Link to="/">Home</Link>
           </Menu.Item>
           <Menu.Item key="product" icon={<AppstoreOutlined />}>
-            <Link to="/product">Product</Link>
+            <Link to="/product/all">Product</Link>
           </Menu.Item>
           <Menu.Item key="login" icon={<AppstoreOutlined />}>
             <Link to="/login">Login</Link>

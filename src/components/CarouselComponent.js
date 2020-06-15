@@ -29,8 +29,11 @@ const Section = styled.section`
     width: 100%;
     height: auto;
 
+    & img {
+      width: 100%;
+    }
+
     & .slick-slide {
-      text-align: center;
       height: auto;
       /* padding: 10px; */
       background: transparent;

@@ -17,7 +17,7 @@ const AsideMenuComponent = () => {
   const menuRef = useRef();
   const { height, width } = useWindowDimension();
 
-  const handleClick = (e) => {
+  const handleMenuClick = (e) => {
     console.log('click ', e);
     setCurrent({
       current: e.key,
@@ -46,11 +46,12 @@ const AsideMenuComponent = () => {
         type="primary"
         onClick={toggleCollapsed}
         style={{ marginBottom: 16 }}
+        size="large"
       >
         {isCollapse ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
       </Button>
       <Menu
-        onClick={handleClick}
+        onClick={handleMenuClick}
         // defaultSelectedKeys={['1']}
         collapsible
         mode="inline"

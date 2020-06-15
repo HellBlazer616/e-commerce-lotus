@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { BackTop } from 'antd';
+import { useParams } from '@reach/router';
 import AsideMenuComponent from '../components/AsideMenuComponent';
 import NavComponent from '../components/NavComponent';
 import CardComponent from '../components/CardComponent';
@@ -8,6 +9,7 @@ import { CartOpenContext } from '../CartOpenContext';
 
 const Product = () => {
   const { visible, setVisible } = useContext(CartOpenContext);
+  const params = useParams();
 
   return (
     <Wrapper>
@@ -23,7 +25,7 @@ const Product = () => {
           <CardComponent />
         </Row>
       </Content>
-
+      <p>{JSON.stringify(params)}</p>
       <BackTop />
     </Wrapper>
   );

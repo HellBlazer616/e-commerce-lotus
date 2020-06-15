@@ -1,7 +1,7 @@
 import React from 'react';
 import { Drawer } from 'antd';
 
-const CartComponent = ({ showCart, visible, setVisible }) => {
+const CartComponent = ({ visible, setVisible }) => {
   const onClose = () => {
     setVisible(false);
   };
