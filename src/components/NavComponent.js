@@ -50,6 +50,9 @@ const NavComponent = ({ visible, setVisible }) => {
           <Menu.Item key="product" icon={<AppstoreOutlined />}>
             <Link to="/product">Product</Link>
           </Menu.Item>
+          <Menu.Item key="login" icon={<AppstoreOutlined />}>
+            <Link to="/login">Login</Link>
+          </Menu.Item>
 
           <SubMenu
             key="avatar"

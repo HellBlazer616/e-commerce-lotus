@@ -43,7 +43,7 @@ const AsideMenuComponent = () => {
         mode="inline"
         style={{ position: 'sticky', top: 0 }}
         ref={menuRef}
-        inlineCollapsed={isCollapse}
+        // inlineCollapsed={isCollapse}
       >
         <Menu.Item key="1">Option 1</Menu.Item>
         <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
