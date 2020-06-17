@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from '@reach/router';
 import styled from '@emotion/styled';
-import { Button } from 'antd';
+import { Button, Rate } from 'antd';
 import NavComponent from '../components/NavComponent';
 import ProductShowcaseCarousel from '../components/ProductShowcaseCarousel';
 import FooterComponent from '../components/FooterComponent';
@@ -10,6 +10,7 @@ const ProductShowcase = () => {
   const params = useParams();
 
   const [product, setProduct] = useState([]);
+  const [offer, setOffer] = useState(0);
 
   useEffect(() => {
     console.log('Show Case');
@@ -37,6 +38,19 @@ const ProductShowcase = () => {
     getProduct();
   }, [params.productId]);
 
+  useEffect(() => {
+    if (product[0]?.price?.offer !== '') {
+      const percent = Math.round(
+        ((Number(product[0]?.price?.regular) -
+          Number(product[0]?.price?.offer)) /
+          Number(product[0]?.price?.regular)) *
+          100
+      );
+
+      setOffer(percent);
+    }
+  }, [product]);
+
   return (
     <Wrapper>
       <NavComponent />
@@ -45,23 +59,36 @@ const ProductShowcase = () => {
         return (
           <div className="product" key={value._id}>
             <div className="product__image">
-              <img src="https://picsum.photos/500/500" alt="carousel pic" />
+              <img
+                src={`${process.env.REACT_APP_DOMAIN.concat(
+                  value?.cover?.medium
+                )}`}
+                alt="product pic"
+              />
             </div>
             <div className="product__info">
               <div className="product__info__upper">
-                <h1>{value.name}</h1>
+                <h2>{value.name}</h2>
                 <p>{value.unit}</p>
-                <p>Brand: {value.brand.name} </p>
-                <h3>Price: {value.price.regular}</h3>
-                {/* {value.price.offer !== '' ? `Offer: `: value.price.offer: null} */}
+                {value.price.offer === '' ? (
+                  <h2>{`৳ ${value.price.regular}`}</h2>
+                ) : (
+                  <>
+                    <s>{`৳${value.price.regular}`}</s>{' '}
+                    <h1
+                      style={{ color: '#f5222d' }}
+                    >{`৳ ${value.price.offer}`}</h1>{' '}
+                  </>
+                )}
+                {offer > 0 ? <h2>{offer}% off</h2> : null}
+                <Rate allowHalf defaultValue={5} />
                 <p>
                   <strong>Category:{value.primaryCategory.name} </strong>
                 </p>
+
+                {/* {value.price.offer !== '' ? `Offer: `: value.price.offer: null} */}
                 <p>
-                  <strong>Description: </strong>Topping tiramisu sweet roll
-                  gingerbread tootsie roll bear claw candy canes chupa chups
-                  macaroon. Topping gummi bears toffee tootsie roll. Gummi bears
-                  chocolate bar pastry.
+                  <strong>Description: </strong> {value.description}
                 </p>
               </div>
               <div className="product__info__lower">
@@ -73,6 +100,7 @@ const ProductShowcase = () => {
           </div>
         );
       })}
+
       <ProductShowcaseCarousel />
       <FooterComponent />
     </Wrapper>

@@ -6,6 +6,7 @@ import AsideMenuComponent from '../components/AsideMenuComponent';
 import NavComponent from '../components/NavComponent';
 import CardComponent from '../components/CardComponent';
 import { CartOpenContext } from '../CartOpenContext';
+import BannerCarousel from '../components/BannerCarousel';
 
 const Product = () => {
   const { visible, setVisible } = useContext(CartOpenContext);
@@ -41,6 +42,7 @@ const Product = () => {
   return (
     <Wrapper>
       <NavComponent visible={visible} setVisible={setVisible} />
+
       <Content>
         <AsideMenuComponent />
         <Row>
@@ -97,9 +99,31 @@ const Row = styled.main`
   flex-direction: column;
   flex-grow: 1;
   flex-wrap: wrap;
-
   & .head {
+    display: flex;
+    flex-direction: column;
+
+    & .head__banner {
+      flex-basis: 100%;
+      background: #2f2f2f;
+      height: 200px;
+    }
+
+    & .head__category {
+      background: #6375a5;
+      height: auto;
+      margin: auto;
+      width: 54%;
+      text-align: center;
+
+      padding: 5px;
+
+      h1 {
+        color: #fff;
+      }
+    }
   }
+
   & .products {
     display: flex;
     justify-content: space-around;
