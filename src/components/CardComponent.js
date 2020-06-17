@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Tooltip, Button } from 'antd';
+import { Card, Tooltip, Button, message } from 'antd';
 import {
   ShoppingCartOutlined,
   EyeOutlined,
@@ -8,14 +8,26 @@ import {
 import { navigate } from '@reach/router';
 
 const { Meta } = Card;
-const CardComponent = () => {
+
+const CardComponent = ({ product }) => {
   const cardOnClick = (e) => {
     console.log(e.target.dataset.key);
     if (e.target.dataset.key === 'show')
-      navigate('/product/showcase/idOfTheProduct');
+      navigate(`/product/showcase/${product._id}`);
+    else if (e.target.dataset.key === 'cart')
+      message.success('Item added to cart');
+    else if (e.target.dataset.key === 'favorite')
+      message.error('You must be logged in');
   };
+
+  const description = <h4>Price: ৳{product.price.regular}</h4>;
+  const title = (
+    <div>
+      <h3>{product.name}</h3>
+    </div>
+  );
   return (
-    <div style={{ margin: '10px' }}>
+    <div style={{ margin: '10px', maxWidth: '300px', wordBreak: 'break-all' }}>
       <Card
         onClick={cardOnClick}
         cover={
@@ -40,7 +52,6 @@ const CardComponent = () => {
                 />
               }
               size="large"
-              hoverable
             />
           </Tooltip>,
           <Tooltip
@@ -63,7 +74,6 @@ const CardComponent = () => {
                 />
               }
               size="large"
-              hoverable
             />
           </Tooltip>,
           <Tooltip title="Add to favorite" placement="bottom">
@@ -81,14 +91,13 @@ const CardComponent = () => {
                 />
               }
               size="large"
-              hoverable
               danger
             />
           </Tooltip>,
         ]}
-        hoverable
       >
-        <Meta title="Product Title" description="Price: $50" />
+        {title}
+        {description}
       </Card>
     </div>
   );

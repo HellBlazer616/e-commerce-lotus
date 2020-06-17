@@ -8,19 +8,22 @@ import Register from './pages/Register';
 import ProductShowCase from './pages/ProductShowcase';
 import ShowCart from './pages/ShowCart';
 import { CartOpenProvider } from './CartOpenContext';
+import { CategoryProvider } from './context/CategoryContext';
 
 function App() {
   return (
-    <CartOpenProvider>
-      <Router>
-        <Landing path="/" />
-        <Product path="product/:productId" />
-        <ProductShowCase path="product/showcase/:productId" />
-        <Register path="/register" />
-        <Login path="/login" />
-        <ShowCart path="/cart" />
-      </Router>
-    </CartOpenProvider>
+    <CategoryProvider>
+      <CartOpenProvider>
+        <Router>
+          <Landing path="/" />
+          <Product path="/category/:productId" />
+          <ProductShowCase path="product/showcase/:productId" />
+          <Register path="/register" />
+          <Login path="/login" />
+          <ShowCart path="/cart" />
+        </Router>
+      </CartOpenProvider>
+    </CategoryProvider>
   );
 }
 

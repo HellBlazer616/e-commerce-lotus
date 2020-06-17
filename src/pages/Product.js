@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { BackTop } from 'antd';
 import { useParams } from '@reach/router';
@@ -10,6 +10,30 @@ import { CartOpenContext } from '../CartOpenContext';
 const Product = () => {
   const { visible, setVisible } = useContext(CartOpenContext);
   const params = useParams();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getProduct() {
+      if (localStorage.getItem(`${params.productId}`)) {
+        const data = JSON.parse(localStorage.getItem(`${params.productId}`));
+        setProducts(data);
+        console.log('not fetched');
+        return;
+      }
+      await fetch(`/api/category/${params.productId}/product`, {
+        method: 'GET',
+      }).then(async (response) => {
+        const res = await response.json();
+        if (res.data) {
+          console.log('fetched');
+          setProducts(res.data);
+          localStorage.setItem(`${params.productId}`, JSON.stringify(res.data));
+        }
+      });
+    }
+
+    getProduct();
+  }, [params.productId]);
 
   return (
     <Wrapper>
@@ -17,15 +41,12 @@ const Product = () => {
       <Content>
         <AsideMenuComponent />
         <Row>
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
-          <CardComponent />
+          {products.map((product) => {
+            return <CardComponent key={product._id} product={product} />;
+          })}
         </Row>
       </Content>
-      <p>{JSON.stringify(params)}</p>
+
       <BackTop />
     </Wrapper>
   );
@@ -37,8 +58,8 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  justify-content: space-around;
 `;
 const Row = styled.div`
   display: flex;

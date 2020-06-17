@@ -85,9 +85,8 @@ const Wrapper = styled.div`
       }
     }
     & .order__close {
-      margin: auto;
+      /* margin: auto; */
       button {
-        border: 1px solid #f5222d;
         background: transparent;
         cursor: pointer;
         outline-color: #f5222d;

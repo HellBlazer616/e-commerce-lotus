@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { CloseCircleOutlined, DeleteTwoTone } from '@ant-design/icons';
+import { CloseCircleTwoTone, DeleteTwoTone } from '@ant-design/icons';
 
 import { Input } from 'antd';
 import { grey } from '../utils/Colors';
@@ -24,15 +24,16 @@ const OrderElementComponent = () => {
           value={60}
           // onChange={handleQuantity}
           min="1"
+          step="0.5"
         />
-        <h3>
+        <h3 style={{ margin: '10px 0' }}>
           <strong>Total: 60 x $50 = $3000</strong>
         </h3>
       </div>
       <div className="order__close">
         <button type="button">
           <i>
-            <DeleteTwoTone twoToneColor="#f5222d" />
+            <CloseCircleTwoTone twoToneColor="#f5222d" />
           </i>
         </button>
       </div>
@@ -48,21 +49,18 @@ const OrderElement = styled.div`
   border: 1px solid #dadce0;
   margin-bottom: 1rem;
   flex-basis: 100%;
+  @media only screen and (max-width: 1024px) {
+  }
 
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
   & .order__image {
     flex-basis: 30%;
-    align-self: center;
 
-    @media only screen and (max-width: 1024px) {
-      align-self: flex-start;
-    }
     img {
       width: 150px;
       height: 150px;
-      border-radius: 50%;
     }
   }
   & .order__info {
@@ -73,8 +71,13 @@ const OrderElement = styled.div`
 
   & .order__close {
     flex-basis: 10%;
+    align-self: flex-start;
+    @media only screen and (max-width: 1024px) {
+      align-self: flex-end;
+    }
+
     button {
-      border: 1px solid #f5222d;
+      border: none;
       background: transparent;
       cursor: pointer;
       outline-color: #f5222d;
@@ -84,7 +87,7 @@ const OrderElement = styled.div`
       }
     }
     i {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
 `;

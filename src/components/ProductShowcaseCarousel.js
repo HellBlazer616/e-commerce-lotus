@@ -2,8 +2,10 @@ import React from 'react';
 import Slider from 'react-slick';
 import styled from '@emotion/styled';
 import { Carousel } from 'antd';
+import { useParams } from '@reach/router';
 
 const ProductShowcaseCarousel = () => {
+  const params = useParams();
   const handleClick = () => {
     console.log('click');
   };
@@ -47,7 +49,7 @@ const ProductShowcaseCarousel = () => {
 
   return (
     <Wrapper>
-      <h2> Similar items </h2>
+      <h2> Similar items {params.productId}</h2>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Carousel {...settings}>
         <button type="button" onClick={handleClick}>

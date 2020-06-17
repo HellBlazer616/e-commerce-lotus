@@ -52,6 +52,20 @@ const Log = styled.div`
       margin-bottom: 10px;
       font-size: 14px;
     }
+    select {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid white;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #2f2f2f;
+    }
+    option {
+      color: #2f2f2f;
+    }
     label {
       line-height: 2;
       text-align: left;

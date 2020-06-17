@@ -4,11 +4,7 @@ import styled from '@emotion/styled';
 import { navigate } from '@reach/router';
 import OrderComponent from './OrderComponent';
 
-const CartComponent = ({ visible, setVisible }) => {
-  const onClose = () => {
-    setVisible(!visible);
-  };
-
+const CartComponent = ({ visible, onClose }) => {
   const redirectCart = () => {
     navigate('/cart');
   };
@@ -47,11 +43,6 @@ const CartComponent = ({ visible, setVisible }) => {
 };
 
 const StyledDrawer = styled(Drawer)`
-  width: 650px;
-  @media only screen and (min-width: 767px) {
-    width: 300px;
-  }
-
   & .order__close {
     margin: 10px;
     align-self: flex-end;

@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
-import { Menu, Input, Dropdown, Button, Tooltip, Badge, Select } from 'antd';
+import React, { useState, useContext } from 'react';
+import {
+  Menu,
+  Input,
+  Dropdown,
+  Button,
+  Tooltip,
+  Badge,
+  Select,
+  Affix,
+  Avatar,
+} from 'antd';
 import { Link } from '@reach/router';
 import {
   AppstoreOutlined,
   CaretDownOutlined,
   ShoppingCartOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import { RiMenu2Line } from 'react-icons/ri';
 import styled from '@emotion/styled';
 import CartComponent from './CartComponent';
+import { CategoryContext } from '../context/CategoryContext';
 
 const { SubMenu } = Menu;
 const { Search } = Input;
@@ -18,6 +30,8 @@ const NavComponent = () => {
   const [current, setCurrent] = useState({});
   const [visible, setVisible] = useState(false);
 
+  const { category } = useContext(CategoryContext);
+
   const handleNavClick = (e) => {
     console.log('click ', e);
     setCurrent({
@@ -26,7 +40,7 @@ const NavComponent = () => {
   };
 
   const showCart = () => {
-    setVisible(true);
+    setVisible(!visible);
   };
 
   const handleCategoryClick = (e) => {
@@ -45,27 +59,28 @@ const NavComponent = () => {
           <Menu.Item key="icon" icon={<AppstoreOutlined />}>
             <Link to="/">Brand Icon</Link>
           </Menu.Item>
-          <Menu.Item key="home" icon={<AppstoreOutlined />}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="product" icon={<AppstoreOutlined />}>
-            <Link to="/product/all">Product</Link>
-          </Menu.Item>
-          <Menu.Item key="login" icon={<AppstoreOutlined />}>
-            <Link to="/login">Login</Link>
-          </Menu.Item>
+          <SubMenu
+            key="avatar"
+            // title="Sign in"
+            icon={<Avatar size="large" icon={<UserOutlined />} />}
+            style={{ float: 'right' }}
+          >
+            <Menu.Item key="login" icon={<AppstoreOutlined />}>
+              <Link to="/login">Login</Link>
+            </Menu.Item>
+          </SubMenu>
+          <SubMenu key="grocery" title="Grocery" icon={<AppstoreOutlined />}>
+            {category.map((value) => {
+              return (
+                <Menu.Item key={value._id} icon={<AppstoreOutlined />}>
+                  <Link to={`/category/${value._id}`}>{value.name}</Link>
+                </Menu.Item>
+              );
+            })}
+          </SubMenu>
           <Menu.Item key="cart" icon={<AppstoreOutlined />}>
             <Link to="/cart">Show Cart</Link>
           </Menu.Item>
-
-          <SubMenu
-            key="avatar"
-            title="  User avatar will be here"
-            icon={<AppstoreOutlined />}
-            style={{ float: 'right' }}
-          >
-            <Menu.Item key="7">Login</Menu.Item>
-          </SubMenu>
         </StyledMenu>
 
         <div className="bottom-nav">
@@ -86,12 +101,15 @@ const NavComponent = () => {
             size="large"
             onSearch={(value) => console.log(value)}
           />
-          <button
+          <div
             onClick={showCart}
             style={{ margin: '0 20px' }}
             type="button"
             aria-label="cart-button"
             className="cart-button"
+            role="button"
+            onKeyDown={showCart}
+            tabIndex={0}
           >
             <Badge count={0} showZero>
               <Tooltip title="open cart">
@@ -107,10 +125,10 @@ const NavComponent = () => {
                 />
               </Tooltip>
             </Badge>
-          </button>
+          </div>
         </div>
       </Nav>
-      <CartComponent visible={visible} setVisible={setVisible} />
+      <CartComponent visible={visible} onClose={showCart} />
     </>
   );
 };
@@ -132,6 +150,14 @@ const Nav = styled.nav`
   & .cart-button {
     border: none;
     background: inherit;
+    margin: 0px 20px;
+    position: fixed;
+    right: 0px;
+    bottom: 40%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
   }
 `;
 

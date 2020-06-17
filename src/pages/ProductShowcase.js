@@ -50,16 +50,18 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 3rem 0;
+    margin: 3rem auto;
+    width: 80%;
 
     @media only screen and (max-width: 767px) {
       margin: 0;
+      width: 100%;
     }
 
     & .product__image {
       justify-content: center;
       @media only screen and (max-width: 767px) {
-        flex-basis: 70%;
+        flex-basis: 100%;
       }
       img {
         width: 100%;
