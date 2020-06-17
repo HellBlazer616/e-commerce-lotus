@@ -7,6 +7,7 @@ import NavComponent from '../components/NavComponent';
 import CardComponent from '../components/CardComponent';
 import { CartOpenContext } from '../CartOpenContext';
 import BannerCarousel from '../components/BannerCarousel';
+import CarouselComponent from '../components/CarouselComponent';
 
 const Product = () => {
   const { visible, setVisible } = useContext(CartOpenContext);
@@ -42,13 +43,12 @@ const Product = () => {
   return (
     <Wrapper>
       <NavComponent visible={visible} setVisible={setVisible} />
-
       <Content>
         <AsideMenuComponent />
         <Row>
           <section className="head">
             <article className="head__banner">
-              <h1>Banner</h1>
+              <BannerCarousel />
             </article>
             <article className="head__category">
               <h1 style={{ textAlign: 'center' }}>
@@ -97,16 +97,17 @@ const Content = styled.div`
 const Row = styled.main`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   flex-wrap: wrap;
+
   & .head {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 
     & .head__banner {
-      flex-basis: 100%;
-      background: #2f2f2f;
-      height: 200px;
+      /*  */
+      overflow: hidden;
+      margin-bottom: 1rem;
     }
 
     & .head__category {
