@@ -40,7 +40,9 @@ const Product = () => {
     setLoading(false);
   }, [params.productId]);
 
-  return (
+  return loading ? (
+    <Skeleton />
+  ) : (
     <Wrapper>
       <NavComponent visible={visible} setVisible={setVisible} />
       <Content>
@@ -61,16 +63,12 @@ const Product = () => {
 
           <section className="products">
             {/* eslint-disable-next-line no-nested-ternary */}
-            {products.length === 0 ? (
-              loading ? (
-                <Skeleton />
-              ) : (
-                <Result
-                  status="404"
-                  title="404"
-                  subTitle="Sorry, we are out of stock. Please check back soon!! 😊😊😊 "
-                />
-              )
+            {products.length === 0 && !loading ? (
+              <Result
+                status="404"
+                title="404"
+                subTitle="Sorry, we are out of stock. Please check back soon!! 😊😊😊 "
+              />
             ) : (
               products.map((product) => {
                 return <CardComponent key={product._id} product={product} />;

@@ -82,6 +82,8 @@ const BannerCarousel = () => {
 };
 
 const Wrapper = styled.div`
+  margin-top: 1rem;
+
   & .resize {
     width: 85vw;
     height: 200px;

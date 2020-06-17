@@ -1,5 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useContext,
+  useLayoutEffect,
+} from 'react';
 import { Menu, Button } from 'antd';
 import {
   MailOutlined,
@@ -29,7 +35,7 @@ const AsideMenuComponent = () => {
     setIsCollapse(!isCollapse);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (width > 500 && isCollapse) {
       setIsCollapse(false);
       console.log('render');
