@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Link } from '@reach/router';
 import vegetable from '../utils/assets/vegetable.svg';
 import vegetable2 from '../utils/assets/vegetable2.svg';
 import beverage from '../utils/assets/beverage.svg';
@@ -7,7 +8,7 @@ import cooking from '../utils/assets/cooking.svg';
 import meat from '../utils/assets/meat.svg';
 import fish from '../utils/assets/fish.svg';
 
-const ProductCategoryComponent = () => {
+const ProductCategoryComponent = ({ category }) => {
   return (
     <div>
       <Row>
@@ -20,39 +21,14 @@ const ProductCategoryComponent = () => {
           </p>
         </div>
         <section>
-          <button size="large" type="button">
-            <img src={vegetable} alt="" />
-            Fruits
-          </button>
-
-          <button size="large" type="button">
-            <img src={vegetable2} alt="" />
-            Vegetable
-          </button>
-
-          <button size="large" type="button">
-            <img src={cooking} alt="" />
-            Cooking
-          </button>
-
-          <button size="large" type="button">
-            <img src={meat} alt="" />
-            Meat
-          </button>
-
-          <button size="large" type="button">
-            <img src={fish} alt="" />
-            fish
-          </button>
-
-          <button
-            size="large"
-            type="button"
-            onClick={() => console.log('Clicked')}
-          >
-            <img src={beverage} alt="" />
-            Beverages
-          </button>
+          {category.map((value) => {
+            return (
+              <StyledLink to={`/category/${value._id}`}>
+                <img src={vegetable} alt="" />
+                {value.name}
+              </StyledLink>
+            );
+          })}
         </section>
       </Row>
     </div>
@@ -77,28 +53,7 @@ const Row = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
 
-    button {
-      display: flex;
-      flex-basis: 23%;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-      flex-direction: column;
-      align-items: center;
-      & img {
-        width: 120px;
-        height: auto;
-        flex-basis: 100%;
-      }
-      color: #000;
-      text-decoration: none;
-      margin: 1em 0;
-      border: none;
-      :hover {
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      }
-    }
-  }
+  
 
   @media (max-width: 927px) {
     section {
@@ -106,6 +61,28 @@ const Row = styled.div`
       flex-basis: 80%;
       margin: auto;
     }
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-basis: 23%;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+  align-items: center;
+  & img {
+    width: 120px;
+    height: auto;
+    flex-basis: 100%;
+  }
+  color: #000;
+  text-decoration: none;
+  margin: 1em 0;
+  border: none;
+  :hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 `;
 

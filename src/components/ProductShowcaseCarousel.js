@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import styled from '@emotion/styled';
-import { Carousel } from 'antd';
+import { Carousel, Card } from 'antd';
 import { useParams } from '@reach/router';
 
 const ProductShowcaseCarousel = () => {
@@ -49,35 +49,61 @@ const ProductShowcaseCarousel = () => {
 
   return (
     <Wrapper>
-      <h2> Similar items {params.productId}</h2>
+      <h2> Similar items </h2>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Carousel {...settings}>
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <h3>Price: $50</h3>
         </button>
+
         <button type="button" onClick={handleClick}>
-          <img src="https://picsum.photos/400/300" alt="carousel pic" />
+          <img src="https://picsum.photos/300/300" alt="carousel pic" />
+          <h1>Some Title</h1>
+          <p>Price: $50</p>
         </button>
       </Carousel>
     </Wrapper>
@@ -96,7 +122,9 @@ const Wrapper = styled.div`
     font-size: calc(16px + 1vw);
   }
   width: 100%;
-
+  div {
+    margin: auto;
+  }
   button {
     border: none;
     background: transparent;

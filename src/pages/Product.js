@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { BackTop } from 'antd';
+import { BackTop, Result } from 'antd';
 import { useParams } from '@reach/router';
 import AsideMenuComponent from '../components/AsideMenuComponent';
 import NavComponent from '../components/NavComponent';
@@ -41,9 +41,17 @@ const Product = () => {
       <Content>
         <AsideMenuComponent />
         <Row>
-          {products.map((product) => {
-            return <CardComponent key={product._id} product={product} />;
-          })}
+          {products.length === 0 ? (
+            <Result
+              status="404"
+              title="404"
+              subTitle="Sorry, we are out of stock. Please check back soon!! 😊😊😊 "
+            />
+          ) : (
+            products.map((product) => {
+              return <CardComponent key={product._id} product={product} />;
+            })
+          )}
         </Row>
       </Content>
 

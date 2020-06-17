@@ -29,7 +29,9 @@ const CardComponent = ({ product }) => {
   return (
     <div style={{ margin: '10px', maxWidth: '300px', wordBreak: 'break-all' }}>
       <Card
+        bodyStyle={{ maxWidth: '260px' }}
         onClick={cardOnClick}
+        hoverable
         cover={
           <img
             alt="example"

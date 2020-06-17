@@ -69,7 +69,7 @@ const NavComponent = () => {
               <Link to="/login">Login</Link>
             </Menu.Item>
           </SubMenu>
-          <SubMenu key="grocery" title="Grocery" icon={<AppstoreOutlined />}>
+          <SubMenu key="grocery" title="Grocery" icon={<CaretDownOutlined />}>
             {category.map((value) => {
               return (
                 <Menu.Item key={value._id} icon={<AppstoreOutlined />}>
