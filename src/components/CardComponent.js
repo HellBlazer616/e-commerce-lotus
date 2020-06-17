@@ -6,6 +6,8 @@ import {
   HeartOutlined,
 } from '@ant-design/icons';
 import { navigate } from '@reach/router';
+import styled from '@emotion/styled';
+import LazyLoad from 'react-lazyload';
 
 const { Meta } = Card;
 
@@ -20,23 +22,37 @@ const CardComponent = ({ product }) => {
       message.error('You must be logged in');
   };
 
-  const description = <h4>Price: ৳{product.price.regular}</h4>;
-  const title = (
-    <div>
-      <h3>{product.name}</h3>
+  const titleAndDescription = (
+    <div
+      style={{
+        textAlign: 'center',
+        width: '80%',
+        margin: 'auto',
+
+        padding: '1rem',
+      }}
+    >
+      <p>{product.name}</p>
+      <h3>৳{product.price.regular}</h3>
     </div>
   );
   return (
-    <div style={{ margin: '10px', maxWidth: '300px', wordBreak: 'break-all' }}>
+    <Article>
       <Card
-        bodyStyle={{ maxWidth: '260px' }}
+        bodyStyle={{ maxWidth: 300 }}
         onClick={cardOnClick}
         hoverable
         cover={
-          <img
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
+          <LazyLoad height={200} offset={100}>
+            <img
+              alt="example"
+              src={`${process.env.REACT_APP_DOMAIN.concat(
+                product?.cover?.medium
+              )}`}
+              // src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              style={{ width: '100%', height: 160 }}
+            />
+          </LazyLoad>
         }
         actions={[
           <Tooltip title="Add to cart" placement="bottom">
@@ -98,11 +114,17 @@ const CardComponent = ({ product }) => {
           </Tooltip>,
         ]}
       >
-        {title}
-        {description}
+        {titleAndDescription}
       </Card>
-    </div>
+    </Article>
   );
 };
+
+const Article = styled.article`
+  margin: 10px;
+  max-width: 300px;
+  word-break: break-all;
+  margin: 1rem;
+`;
 
 export default CardComponent;

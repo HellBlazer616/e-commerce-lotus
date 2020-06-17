@@ -122,6 +122,7 @@ const NavComponent = () => {
                     />
                   }
                   size="large"
+                  block
                 />
               </Tooltip>
             </Badge>
