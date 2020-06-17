@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Carousel } from 'antd';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 
 const BannerCarousel = () => {
   const settings = {
@@ -10,25 +11,28 @@ const BannerCarousel = () => {
     slidesToScroll: 3,
     className: 'resize',
     autoplay: true,
-    arrows: false,
+    arrows: true,
     dots: true,
     swipeToSlide: true,
+    prevArrow: <ArrowLeftOutlined style={{ fontSize: 20, color: 'red' }} />,
+    nextArrow: <ArrowRightOutlined style={{ fontSize: 20, color: 'red' }} />,
+
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1453,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1084,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
       {
@@ -46,31 +50,31 @@ const BannerCarousel = () => {
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Carousel {...settings}>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/200/200" alt="carousel pic" />
+          <img src="https://picsum.photos/400/150" alt="carousel pic" />
         </div>
       </Carousel>
     </Wrapper>
@@ -79,9 +83,30 @@ const BannerCarousel = () => {
 
 const Wrapper = styled.div`
   & .resize {
-    width: 70vw;
+    width: 85vw;
     height: 200px;
     overflow: hidden;
+    margin: auto;
+  }
+  @media (max-width: 1442px) {
+    & .resize {
+      width: 75vw;
+    }
+  }
+  @media (max-width: 724px) {
+    & .resize {
+      width: 50vw;
+    }
+  }
+  @media (max-width: 370px) {
+    & .resize {
+      width: 45vw;
+    }
+  }
+  @media (max-width: 290px) {
+    & .resize {
+      width: 35vw;
+    }
   }
 
   width: 100%;
@@ -91,7 +116,12 @@ const Wrapper = styled.div`
 
   img {
     margin: auto;
-    object-fit: cover;
+
+    @media (max-width: 724px) {
+      img {
+        width: 100%;
+      }
+    }
   }
 `;
 

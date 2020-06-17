@@ -92,13 +92,13 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 `;
 const Row = styled.main`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-
+  flex-basis: 100%;
   & .head {
     display: flex;
     flex-direction: column;

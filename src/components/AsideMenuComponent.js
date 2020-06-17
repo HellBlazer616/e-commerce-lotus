@@ -33,14 +33,14 @@ const AsideMenuComponent = () => {
     if (width > 500 && isCollapse) {
       setIsCollapse(false);
       console.log('render');
-    } else if (width < 500 && !isCollapse) {
+    } else if (width < 550 && !isCollapse) {
       console.log('render');
       setIsCollapse(true);
     }
   }, [width]);
 
   return (
-    <aside>
+    <aside style={{ maxWidth: 300 }}>
       <Menu
         onClick={handleMenuClick}
         mode="vertical"
