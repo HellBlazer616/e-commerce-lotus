@@ -1,11 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from '@reach/router';
 import { Card } from 'antd';
-import Column from 'antd/lib/table/Column';
+import styled from '@emotion/styled';
 import NavComponent from '../components/NavComponent';
 import AsideMenuComponent from '../components/AsideMenuComponent';
-
-const { Meta } = Card;
 
 const CategoryShowcase = () => {
   const [subCategories, setSubCategories] = useState([]);
@@ -35,30 +34,11 @@ const CategoryShowcase = () => {
   }, [params.categoryId]);
 
   return (
-    <main
-      style={{
-        minHeight: '100vh',
-        background: '#eee',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+    <Wrapper>
       <NavComponent />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
+      <main className="content">
         <AsideMenuComponent />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-start',
-            flexWrap: 'wrap',
-            flexBasis: '100%',
-          }}
-        >
+        <article className="content__category">
           {subCategories.map((subCategory) => {
             return (
               <Link to={`/category/${subCategory._id}`}>
@@ -85,10 +65,29 @@ const CategoryShowcase = () => {
               </Link>
             );
           })}
-        </div>
-      </div>
-    </main>
+        </article>
+      </main>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  min-height: 100vh;
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+
+  & .content {
+    display: flex;
+    justify-content: space-between;
+
+    & .content__category {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      flex-basis: 100%;
+    }
+  }
+`;
 
 export default CategoryShowcase;
