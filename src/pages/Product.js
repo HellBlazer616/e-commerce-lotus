@@ -80,34 +80,35 @@ const Product = () => {
             <article className="head__banner">
               <BannerCarousel />
             </article>
-            <article className="head__category">
-              <h1 style={{ textAlign: 'center' }}>
-                {products.length >= 1 && products[1].categoryName
-                  ? products[1].categoryName[0]
-                  : 'NO CATEGORY'}
-              </h1>
-            </article>
-            <article className="head__sort">
-              <Select
-                showSearch
-                style={{ width: 200 }}
-                placeholder="Select sorting category"
-                optionFilterProp="children"
-                onChange={sortProducts}
-                style={{ margin: '1rem' }}
-              >
-                <Option value="added">Sort by add</Option>
-                <Option value="price">Sort by Price</Option>
-              </Select>
-              <Radio.Group onChange={changeSortOrder} defaultValue={1}>
-                <Radio data-key={1} value={1}>
-                  Ascending
-                </Radio>
-                <Radio data-key={-1} value={-1}>
-                  Descending
-                </Radio>
-              </Radio.Group>
-            </article>
+            <section className="head__bottom">
+              <article className="head__category">
+                <h1 style={{ textAlign: 'center' }}>
+                  {products.length >= 1 && products[1].categoryName
+                    ? products[1].categoryName[0]
+                    : 'NO CATEGORY'}
+                </h1>
+              </article>
+              <article className="head__sort">
+                <Select
+                  showSearch
+                  style={{ width: 200, margin: '1rem' }}
+                  placeholder="Select sorting category"
+                  optionFilterProp="children"
+                  onChange={sortProducts}
+                >
+                  <Option value="added">Sort by add</Option>
+                  <Option value="price">Sort by Price</Option>
+                </Select>
+                <Radio.Group onChange={changeSortOrder} defaultValue={1}>
+                  <Radio data-key={1} value={1}>
+                    Ascending
+                  </Radio>
+                  <Radio data-key={-1} value={-1}>
+                    Descending
+                  </Radio>
+                </Radio.Group>
+              </article>
+            </section>
           </section>
 
           <section className="products">
@@ -149,12 +150,13 @@ const Row = styled.main`
   & .head {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     & .head__banner {
       /*  */
       overflow: hidden;
       margin-bottom: 1rem;
+      /* min-height: 220px; */
     }
 
     & .head__category {
@@ -170,6 +172,12 @@ const Row = styled.main`
         color: #fff;
         margin: 0;
       }
+    }
+
+    & .head__bottom {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0;
     }
 
     & .head__sort {

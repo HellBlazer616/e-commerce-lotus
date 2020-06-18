@@ -48,7 +48,7 @@ const AsideMenuComponent = () => {
         style={{ position: 'sticky', top: 0 }}
         ref={menuRef}
         inlineCollapsed={isCollapse}
-        selectable={false}
+        selectable
       >
         <Button
           onClick={toggleCollapsed}
