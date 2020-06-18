@@ -1,44 +1,72 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { BackTop, Result, Skeleton } from 'antd';
+import { BackTop, Result, Skeleton, Select, Radio } from 'antd';
 import { useParams } from '@reach/router';
 import AsideMenuComponent from '../components/AsideMenuComponent';
 import NavComponent from '../components/NavComponent';
 import CardComponent from '../components/CardComponent';
 import { CartOpenContext } from '../CartOpenContext';
 import BannerCarousel from '../components/BannerCarousel';
-import CarouselComponent from '../components/CarouselComponent';
+
+const { Option } = Select;
 
 const Product = () => {
   const { visible, setVisible } = useContext(CartOpenContext);
   const params = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [sort, setSort] = useState('added');
+  const [sortOrder, setSortOrder] = useState(1);
+
+  const sortProducts = (value) => {
+    if (sort === value) return;
+    console.log(value);
+    setSort(value);
+  };
+  const changeSortOrder = (value) => {
+    if (value.target.value === value) return;
+    setSortOrder(value.target.value);
+    console.log(value.target.value);
+  };
 
   useEffect(() => {
     async function getProduct() {
-      if (localStorage.getItem(`${params.productId}`)) {
-        const data = JSON.parse(localStorage.getItem(`${params.productId}`));
+      if (
+        localStorage.getItem(
+          `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`
+        )
+      ) {
+        const data = JSON.parse(
+          localStorage.getItem(
+            `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`
+          )
+        );
         setProducts(data);
         console.log('not fetched');
         return;
       }
       setLoading(true);
-      await fetch(`/api/category/${params.productId}/product?recursive=true`, {
-        method: 'GET',
-      }).then(async (response) => {
+      await fetch(
+        `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`,
+        {
+          method: 'GET',
+        }
+      ).then(async (response) => {
         const res = await response.json();
         if (res.data) {
           console.log('fetched');
           setProducts(res.data);
-          localStorage.setItem(`${params.productId}`, JSON.stringify(res.data));
+          localStorage.setItem(
+            `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`,
+            JSON.stringify(res.data)
+          );
         }
       });
     }
 
     getProduct();
     setLoading(false);
-  }, [params.productId]);
+  }, [params.productId, sort, sortOrder]);
 
   return loading ? (
     <Skeleton />
@@ -58,6 +86,27 @@ const Product = () => {
                   ? products[1].categoryName[0]
                   : 'NO CATEGORY'}
               </h1>
+            </article>
+            <article className="head__sort">
+              <Select
+                showSearch
+                style={{ width: 200 }}
+                placeholder="Select sorting category"
+                optionFilterProp="children"
+                onChange={sortProducts}
+                style={{ margin: '1rem' }}
+              >
+                <Option value="added">Sort by add</Option>
+                <Option value="price">Sort by Price</Option>
+              </Select>
+              <Radio.Group onChange={changeSortOrder} defaultValue={1}>
+                <Radio data-key={1} value={1}>
+                  Ascending
+                </Radio>
+                <Radio data-key={-1} value={-1}>
+                  Descending
+                </Radio>
+              </Radio.Group>
             </article>
           </section>
 
@@ -121,6 +170,16 @@ const Row = styled.main`
         color: #fff;
         margin: 0;
       }
+    }
+
+    & .head__sort {
+      flex-basis: 100%;
+      display: flex;
+
+      margin: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      margin: 1rem;
     }
   }
 
