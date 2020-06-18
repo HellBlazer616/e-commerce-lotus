@@ -7,16 +7,16 @@ const CarouselComponent = () => {
     <Section>
       <Carousel autoplay infinite>
         <div>
-          <img src="https://picsum.photos/1920/500" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/840" alt="carousel pic" />
         </div>
         <div>
-          <img src="https://picsum.photos/1920/500" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/840" alt="carousel pic" />
         </div>
         <div>
-          <img src="https://picsum.photos/1920/500" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/840" alt="carousel pic" />
         </div>
         <div>
-          <img src="https://picsum.photos/1920/500" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/840" alt="carousel pic" />
         </div>
       </Carousel>
     </Section>
@@ -31,6 +31,7 @@ const Section = styled.section`
 
     & img {
       width: 100%;
+      min-height: 600px;
     }
 
     & .slick-slide {
