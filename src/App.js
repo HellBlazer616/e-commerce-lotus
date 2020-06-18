@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ProductShowCase from './pages/ProductShowcase';
 import ShowCart from './pages/ShowCart';
+import CategoryShowCase from './pages/CategoryShowcase';
 import { CartOpenProvider } from './CartOpenContext';
 import { CategoryProvider } from './context/CategoryContext';
 
@@ -18,6 +19,7 @@ function App() {
           <Landing path="/" />
           <Product path="/category/:productId" />
           <ProductShowCase path="product/showcase/:productId" />
+          <CategoryShowCase path="category/showcase/:categoryId" />
           <Register path="/register" />
           <Login path="/login" />
           <ShowCart path="/cart" />

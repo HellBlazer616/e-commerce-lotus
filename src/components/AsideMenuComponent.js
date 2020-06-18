@@ -14,7 +14,7 @@ import {
   CaretLeftFilled,
   CaretRightFilled,
 } from '@ant-design/icons';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import useWindowDimension from '../utils/customHooks/useWindowDimension';
 import { CategoryContext } from '../context/CategoryContext';
 
@@ -24,13 +24,9 @@ const AsideMenuComponent = () => {
   const [current, setCurrent] = useState({});
   const [isCollapse, setIsCollapse] = useState(false);
   const menuRef = useRef();
-  const { height, width } = useWindowDimension();
+  const { width } = useWindowDimension();
   const { category } = useContext(CategoryContext);
-  const handleMenuClick = (e) => {
-    setCurrent({
-      current: e.key,
-    });
-  };
+
   const toggleCollapsed = () => {
     setIsCollapse(!isCollapse);
   };
@@ -48,11 +44,11 @@ const AsideMenuComponent = () => {
   return (
     <aside style={{ maxWidth: 300 }}>
       <Menu
-        onClick={handleMenuClick}
         mode="vertical"
         style={{ position: 'sticky', top: 0 }}
         ref={menuRef}
         inlineCollapsed={isCollapse}
+        selectable={false}
       >
         <Button
           onClick={toggleCollapsed}
@@ -68,7 +64,14 @@ const AsideMenuComponent = () => {
               <SubMenu
                 key={value._id}
                 icon={<MailOutlined />}
-                title={value.name}
+                title={
+                  <Link
+                    style={{ color: 'inherit' }}
+                    to={`/category/showcase/${value._id}`}
+                  >
+                    {value.name}
+                  </Link>
+                }
               >
                 {value.subCategory.map((valueSub) => {
                   return (

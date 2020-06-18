@@ -17,7 +17,7 @@ const ProductShowcaseCarousel = () => {
     className: 'resize',
     autoplay: true,
     arrows: false,
-    dots: true,
+    dots: false,
     swipeToSlide: true,
     responsive: [
       {

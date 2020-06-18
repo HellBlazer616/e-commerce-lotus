@@ -12,8 +12,7 @@ import {
 import { navigate } from '@reach/router';
 import styled from '@emotion/styled';
 import LazyLoad from 'react-lazyload';
-
-const { Meta } = Card;
+import CardBodyComponent from './CardBodyComponent';
 
 const CardComponent = ({ product }) => {
   const [count, setCount] = useState(0);
@@ -37,9 +36,7 @@ const CardComponent = ({ product }) => {
   useEffect(() => {
     if (product.price.offer !== '') {
       const percent = Math.round(
-        ((Number(product.price.regular) - Number(product.price.offer)) /
-          Number(product.price.regular)) *
-          100
+        Number(product.price.regular) - Number(product.price.offer)
       );
 
       setOffer(percent);
@@ -50,66 +47,13 @@ const CardComponent = ({ product }) => {
   //   console.log(e.target.dataset.key);
   // };
 
-  const titleAndDescription = (
-    <div
-      style={{
-        textAlign: 'center',
-        width: '100%',
-        margin: 'auto',
-        padding: '1rem',
-      }}
-    >
-      <p>{product.name}</p>
-      {product.price.offer === '' ? (
-        <h3>{`৳ ${product.price.regular}`}</h3>
-      ) : (
-        <>
-          <s>{`৳${product.price.regular}`}</s>
-          <h2
-            style={{ color: '#f5222d' }}
-          >{`৳ ${product.price.offer}`}</h2>{' '}
-        </>
-      )}
-
-      <section
-        style={{
-          display: 'flex',
-          flexBasis: '100%',
-          justifyContent: 'space-between',
-          margin: 10,
-        }}
-      >
-        <Button
-          type="primary"
-          icon={
-            <MinusSquareTwoTone
-              style={{ fontSize: 30, pointerEvents: 'none' }}
-            />
-          }
-          style={{ background: 'transparent', border: 'none' }}
-          data-key="negative"
-        />
-        <p>{count}</p>
-        <Button
-          type="primary"
-          icon={
-            <PlusSquareTwoTone
-              style={{ fontSize: 30, pointerEvents: 'none' }}
-            />
-          }
-          style={{ background: 'transparent', border: 'none' }}
-          data-key="plus"
-        />
-      </section>
-    </div>
-  );
-
   return (
     <Article displayoffer={offer > 0}>
       <div className="mask">
-        <p>{offer > 0 ? offer : 0}%</p>
+        <p>{offer > 0 ? `৳ ${offer} Off` : 0}</p>
       </div>
       <StyledCard
+        type="inner"
         onClick={cardOnClick}
         hoverable
         cover={
@@ -184,7 +128,7 @@ const CardComponent = ({ product }) => {
           </Tooltip>,
         ]}
       >
-        {titleAndDescription}
+        <CardBodyComponent product={product} />
       </StyledCard>
     </Article>
   );
@@ -198,18 +142,124 @@ const Article = styled.article`
   position: relative;
 
   & .mask {
-    background: #52c41a;
-    width: 40px;
-    height: 21px;
+    background: #f5222d;
+    font-weight: 800;
+    width: 68px;
+    height: 68px;
     position: absolute;
     top: 5px;
     z-index: 1;
     right: 10px;
     text-align: center;
-
     display: block;
     border-radius: 12px;
-    display: ${(props) => (props.displayoffer ? 'block' : 'none')};
+    display: block;
+    margin: auto;
+    text-align: center;
+    clip-path: polygon(
+      50% 0%,
+      46.93% 3.1%,
+      43.47% 0.43%,
+      40.83% 3.9%,
+      37.06% 1.7%,
+      34.89% 5.49%,
+      30.87% 3.81%,
+      29.21% 7.85%,
+      25% 6.7%,
+      23.89% 10.92%,
+      19.56% 10.33%,
+      19.01% 14.66%,
+      14.64% 14.64%,
+      14.66% 19.01%,
+      10.33% 19.56%,
+      10.92% 23.89%,
+      6.7% 25%,
+      7.85% 29.21%,
+      3.81% 30.87%,
+      5.49% 34.89%,
+      1.7% 37.06%,
+      3.9% 40.83%,
+      0.43% 43.47%,
+      3.1% 46.93%,
+      0% 50%,
+      3.1% 53.07%,
+      0.43% 56.53%,
+      3.9% 59.17%,
+      1.7% 62.94%,
+      5.49% 65.11%,
+      3.81% 69.13%,
+      7.85% 70.79%,
+      6.7% 75%,
+      10.92% 76.11%,
+      10.33% 80.44%,
+      14.66% 80.99%,
+      14.64% 85.36%,
+      19.01% 85.34%,
+      19.56% 89.67%,
+      23.89% 89.08%,
+      25% 93.3%,
+      29.21% 92.15%,
+      30.87% 96.19%,
+      34.89% 94.51%,
+      37.06% 98.3%,
+      40.83% 96.1%,
+      43.47% 99.57%,
+      46.93% 96.9%,
+      50% 100%,
+      53.07% 96.9%,
+      56.53% 99.57%,
+      59.17% 96.1%,
+      62.94% 98.3%,
+      65.11% 94.51%,
+      69.13% 96.19%,
+      70.79% 92.15%,
+      75% 93.3%,
+      76.11% 89.08%,
+      80.44% 89.67%,
+      80.99% 85.34%,
+      85.36% 85.36%,
+      85.34% 80.99%,
+      89.67% 80.44%,
+      89.08% 76.11%,
+      93.3% 75%,
+      92.15% 70.79%,
+      96.19% 69.13%,
+      94.51% 65.11%,
+      98.3% 62.94%,
+      96.1% 59.17%,
+      99.57% 56.53%,
+      96.9% 53.07%,
+      100% 50%,
+      96.9% 46.93%,
+      99.57% 43.47%,
+      96.1% 40.83%,
+      98.3% 37.06%,
+      94.51% 34.89%,
+      96.19% 30.87%,
+      92.15% 29.21%,
+      93.3% 25%,
+      89.08% 23.89%,
+      89.67% 19.56%,
+      85.34% 19.01%,
+      85.36% 14.64%,
+      80.99% 14.66%,
+      80.44% 10.33%,
+      76.11% 10.92%,
+      75% 6.7%,
+      70.79% 7.85%,
+      69.13% 3.81%,
+      65.11% 5.49%,
+      62.94% 1.7%,
+      59.17% 3.9%,
+      56.53% 0.43%,
+      53.07% 3.1%
+    );
+
+    display: ${(props) => (props.displayoffer ? 'flex' : 'none')};
+
+    p {
+      margin: auto;
+    }
 
     /* :hover {
       widows: 150px;
@@ -223,9 +273,10 @@ const StyledCard = styled(Card)`
     margin: auto;
   }
   & div:nth-of-type(2) {
+    background: #f9f9f9;
     width: 250px;
     margin: auto;
-    height: 210px;
+    height: auto;
   }
 
   @media (max-width: 360px) {
@@ -236,14 +287,14 @@ const StyledCard = styled(Card)`
   @media (max-width: 330px) {
     & div:nth-of-type(2) {
       width: 200px;
-      height: 240;
+      height: auto;
     }
   }
 
   @media (max-width: 313px) {
     & div:nth-of-type(2) {
       width: 180px;
-      height: 240px;
+      height: auto;
     }
   }
 `;

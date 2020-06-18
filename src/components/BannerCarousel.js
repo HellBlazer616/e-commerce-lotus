@@ -7,28 +7,45 @@ const BannerCarousel = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     className: 'resize',
     autoplay: true,
     arrows: true,
-    dots: true,
+    dots: false,
     swipeToSlide: true,
     prevArrow: <ArrowLeftOutlined style={{ fontSize: 20, color: 'red' }} />,
     nextArrow: <ArrowRightOutlined style={{ fontSize: 20, color: 'red' }} />,
 
     responsive: [
       {
-        breakpoint: 1453,
+        breakpoint: 1820,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           infinite: true,
           dots: true,
         },
       },
       {
-        breakpoint: 1084,
+        breakpoint: 1453,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1230,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 880,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -50,31 +67,31 @@ const BannerCarousel = () => {
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Carousel {...settings}>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/400/150" alt="carousel pic" />
+          <img src="https://picsum.photos/300/150" alt="carousel pic" />
         </div>
       </Carousel>
     </Wrapper>

@@ -24,7 +24,7 @@ const Product = () => {
         return;
       }
       setLoading(true);
-      await fetch(`/api/category/${params.productId}/product`, {
+      await fetch(`/api/category/${params.productId}/product?recursive=true`, {
         method: 'GET',
       }).then(async (response) => {
         const res = await response.json();
@@ -109,16 +109,17 @@ const Row = styled.main`
     }
 
     & .head__category {
-      background: #6375a5;
+      background: #52c41a;
       height: auto;
       margin: auto;
       width: 54%;
       text-align: center;
 
-      padding: 5px;
+      padding: 1rem;
 
       h1 {
         color: #fff;
+        margin: 0;
       }
     }
   }
