@@ -155,6 +155,9 @@ const Wrapper = styled.div`
     & .order__checkout {
       order: 6;
       padding: 10px;
+      /* display: flex; */
+      /* align-items: flex-end;
+      flex-direction: column; */
       span {
         display: flex;
         justify-content: space-between;

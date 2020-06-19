@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { CloseCircleTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import {
+  CloseCircleTwoTone,
+  DeleteTwoTone,
+  CaretUpFilled,
+  CaretDownFilled,
+} from '@ant-design/icons';
 
 import { Input, Button } from 'antd';
 import { grey } from '../utils/Colors';
@@ -9,19 +14,31 @@ const OrderElementComponent = () => {
   return (
     <OrderElement className="order">
       <div className="order__button">
-        <Button shape="circle" size="small" aria-valuetext="increase">
-          +
+        <Button
+          shape="circle"
+          size="small"
+          aria-valuetext="increase"
+          style={{ background: 'transparent' }}
+        >
+          <CaretUpFilled />
+        </Button>
+        <Button
+          size="small"
+          style={{
+            border: 'none',
+            flexGrow: 1,
+            background: '#f1f6f4',
+          }}
+        >
+          20
         </Button>
         <Button
           shape="circle"
           size="small"
-          style={{ border: 'none' }}
-          color="#2f2f2f"
+          aria-valuetext="decrease"
+          style={{ background: 'transparent' }}
         >
-          20
-        </Button>
-        <Button shape="circle" size="small" aria-valuetext="decrease">
-          -
+          <CaretDownFilled />
         </Button>
       </div>
       <div className="order__image">
@@ -82,6 +99,10 @@ const OrderElement = styled.div`
     justify-content: space-around;
     /* flex-basis: 5%; */
     padding: 10px;
+    background: #f1f6f4;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
   }
 
   & .order__image {
@@ -98,7 +119,7 @@ const OrderElement = styled.div`
     flex-direction: column;
     /* flex-basis: 50%; */
     padding: 10px;
-    flex-grow: 5;
+    flex-shrink: 3;
     justify-content: center;
   }
 
@@ -108,7 +129,8 @@ const OrderElement = styled.div`
     flex-direction: column;
     justify-content: center;
     padding: 10px;
-    flex-grow: 2;
+    flex-grow: 1;
+    flex-shrink: 0;
   }
 
   & .order__close {

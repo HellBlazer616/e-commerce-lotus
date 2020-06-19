@@ -85,7 +85,11 @@ const NavComponent = () => {
             placeholder="Select Category"
           >
             {category.map((value) => {
-              return <Option value={value._id}>{value.name}</Option>;
+              return (
+                <Option key={value._id} value={value._id}>
+                  {value.name}
+                </Option>
+              );
             })}
           </Select>
           <StyledSearch

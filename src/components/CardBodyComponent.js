@@ -18,11 +18,11 @@ const CardBodyComponent = ({ product }) => {
           {product.name}
         </p>
         {product.price.offer === '' ? (
-          <h2>{`৳ ${product.price.regular}`}</h2>
+          <h2 style={{ color: '#52c41a' }}>{`৳ ${product.price.regular}`}</h2>
         ) : (
           <>
             <h2>
-              <s>{`৳${product.price.regular} `}</s>
+              <s style={{ color: '#52c41a' }}>{`৳${product.price.regular} `}</s>
               <span
                 style={{ color: '#f5222d' }}
               >{` ৳${product.price.offer}`}</span>

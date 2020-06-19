@@ -8,7 +8,7 @@ import Register from './pages/Register';
 import ProductShowCase from './pages/ProductShowcase';
 import ShowCart from './pages/ShowCart';
 import CategoryShowCase from './pages/CategoryShowcase';
-import Account from './pages/Account';
+import Checkout from './pages/Checkout';
 import OrderDetails from './pages/OrderDetails';
 import { CartOpenProvider } from './CartOpenContext';
 import { CategoryProvider } from './context/CategoryContext';
@@ -28,7 +28,7 @@ function App() {
             <Register path="/register" />
             <Login path="/login" />
             <ShowCart path="/cart" />
-            <Account path="account/user" />
+            <Checkout path="account/user/checkout" />
             <OrderDetails path="account/user/order" />
             <Search path="search/:search" />
           </Router>

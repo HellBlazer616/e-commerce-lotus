@@ -43,7 +43,11 @@ const ProductComponent = ({
                   <Option value="added">Sort by date added</Option>
                   <Option value="price">Sort by price</Option>
                 </Select>
-                <Radio.Group onChange={changeSortOrder} defaultValue={1}>
+                <Radio.Group
+                  className="head__sort-radio"
+                  onChange={changeSortOrder}
+                  defaultValue={1}
+                >
                   <Radio data-key={1} value={1}>
                     Ascending
                   </Radio>
@@ -132,17 +136,21 @@ const Row = styled.main`
       flex-basis: 100%;
       display: flex;
       flex-wrap: wrap;
-      margin: 1rem;
+      margin: 1rem 5rem;
       align-items: center;
       justify-content: space-between;
-      margin: 1rem;
+
+      & .head__sort-radio {
+        margin: 1rem;
+      }
+
       width: 200;
-      margin: '1rem';
     }
 
     @media (max-width: 700px) {
       & .head__sort {
         justify-content: center;
+        margin: 1rem auto;
       }
     }
 

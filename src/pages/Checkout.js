@@ -8,7 +8,7 @@ import useWindowDimension from '../utils/customHooks/useWindowDimension';
 
 const { Step } = Steps;
 
-const OrderDetails = () => {
+const Checkout = () => {
   const [isCollapse, setIsCollapse] = useState(false);
 
   const { width } = useWindowDimension();
@@ -106,7 +106,7 @@ const OrderDetails = () => {
         </Nav>
         <div className="order">
           <section className="order__list">
-            <h2 style={{ marginLeft: '1rem' }}>My Orders</h2>
+            <h2 style={{ marginLeft: '1rem' }}>Delivery Locations</h2>
             <hr />
             <article className="order__list__item">
               <span className="order__list__item__head">
@@ -170,47 +170,7 @@ const OrderDetails = () => {
           <section className="order__details">
             <h2 style={{ margin: '1rem rem' }}>Order Details</h2>
             <hr />
-            <article className="order__details__address">
-              <span>
-                <h2>Delivery Address</h2>
-                <h3>
-                  1st Floor, House 149, Road 22, Somewhere SomePlace, Some City
-                </h3>
-              </span>
-              <div className="order__details__price">
-                <span>
-                  <h3 style={{ marginRight: '3rem' }}>Sub Total</h3>
-                  <h3>$500</h3>
-                </span>
-                <span>
-                  <h3 style={{ marginRight: '3rem' }}>Discount</h3>
-                  <h3>$500</h3>
-                </span>
-                <span>
-                  <h3 style={{ marginRight: '3rem' }}>Delivery Fee</h3>
-                  <h3>$500</h3>
-                </span>
-                <span>
-                  <h3 style={{ marginRight: '3rem' }}>Total</h3>
-                  <h3>$500</h3>
-                </span>
-              </div>
-            </article>
-            <article className="order__details__progress">
-              <Steps
-                className="order__details__steps"
-                direction={width < 800 ? 'vertical' : 'horizontal'}
-                current={1}
-              >
-                <Step title="Finished" description="Order Received" />
-                <Step
-                  title="In Progress"
-                  subTitle="Left 00:00:08"
-                  description="Order on the way"
-                />
-                <Step title="Waiting" description="Order Delivered" />
-              </Steps>
-            </article>
+
             <article className="order__details__list">
               <Table
                 className="order__details__list__table"
@@ -346,4 +306,4 @@ const Main = styled.main`
   }
 `;
 
-export default OrderDetails;
+export default Checkout;
