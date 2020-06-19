@@ -10,7 +10,7 @@ import {
   Affix,
   Avatar,
 } from 'antd';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import {
   AppstoreOutlined,
   CaretDownOutlined,
@@ -27,35 +27,28 @@ const { Search } = Input;
 const { Option } = Select;
 
 const NavComponent = () => {
-  const [current, setCurrent] = useState({});
   const [visible, setVisible] = useState(false);
+  const [searchCategory, setSearchCategory] = useState('');
 
   const { category } = useContext(CategoryContext);
-
-  const handleNavClick = (e) => {
-    console.log('click ', e);
-    setCurrent({
-      current: e.key,
-    });
-  };
 
   const showCart = () => {
     setVisible(!visible);
   };
 
-  const handleCategoryClick = (e) => {
-    console.log('click ', e);
+  const handleCategoryClick = (value) => {
+    if (value !== '') setSearchCategory(value);
+  };
+
+  const searchItem = (query) => {
+    if (query !== '' && searchCategory !== '')
+      navigate(`/search/searchCategory=${searchCategory}&query=${query}`);
   };
 
   return (
     <>
       <Nav>
-        <StyledMenu
-          onClick={handleNavClick}
-          selectedKeys={[current]}
-          mode="horizontal"
-          overflowedIndicator={<RiMenu2Line />}
-        >
+        <StyledMenu mode="horizontal" overflowedIndicator={<RiMenu2Line />}>
           <Menu.Item key="icon" icon={<AppstoreOutlined />}>
             <Link to="/">Brand Icon</Link>
           </Menu.Item>
@@ -85,21 +78,21 @@ const NavComponent = () => {
 
         <div className="bottom-nav">
           <Select
-            defaultValue="All Category"
             style={{ width: 120 }}
             onChange={handleCategoryClick}
             className="bottom-nav__button"
             size="large"
+            placeholder="Select Category"
           >
-            <Option value="all-category">All Categories</Option>
-            <Option value="fruit">Fruit</Option>
-            <Option value="vegetable">Vegetable</Option>
+            {category.map((value) => {
+              return <Option value={value._id}>{value.name}</Option>;
+            })}
           </Select>
           <StyledSearch
             placeholder="input search text"
             enterButton="Search"
             size="large"
-            onSearch={(value) => console.log(value)}
+            onSearch={searchItem}
           />
           <div
             onClick={showCart}

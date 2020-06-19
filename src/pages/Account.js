@@ -32,93 +32,45 @@ const Account = () => {
           </article>
           <article className="order">
             <h1 className="order__header">Your Order</h1>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                margin: '1rem',
-                flexBasis: '80%',
-                padding: '2rem',
-              }}
-            >
+            <div className="order__body">
               <h3 style={{ fontWeight: 400 }}>
-                <strong>2</strong> x Something
-                ssssssssssssssssssssssssssssssssssssssssssss
+                <strong>2</strong> x Ginger Indian[Net Weight +10gm] (আদা)/250
+                gm Ginger Indian[Net Weight +10gm] (আদা)/250 gm/
               </h3>
               <h1>$50</h1>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                margin: '1rem',
-                flexBasis: '80%',
-                padding: '2rem',
-              }}
-            >
+            <div className="order__body">
               <div>
                 <h3 style={{ fontWeight: 400 }}>
-                  <strong>2</strong> x Something
-                  ssssssssssssssssssssssssssssssssssssssssssss
+                  <strong>2</strong> x Ginger Indian[Net Weight +10gm] (আদা)/250
+                  gm Ginger Indian[Net Weight +10gm] (আদা)/250 gm/
                 </h3>
               </div>
               <h1>$50</h1>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                margin: '1rem',
-                flexBasis: '80%',
-                padding: '2rem',
-              }}
-            >
+            <div className="order__body">
               <h3 style={{ fontWeight: 400 }}>
-                <strong>2</strong> x Something
-                ssssssssssssssssssssssssssssssssssssssssssss
+                <strong>2</strong> x Ginger Indian[Net Weight +10gm] (আদা)/250
+                gm Ginger Indian[Net Weight +10gm] (আদা)/250 gm/
               </h3>
               <h1>$50</h1>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                margin: '1rem',
-                flexBasis: '80%',
-                padding: '2rem',
-              }}
-            >
+            <div className="order__body">
               <h3 style={{ fontWeight: 400 }}>
-                <strong>2</strong> x Something
-                ssssssssssssssssssssssssssssssssssssssssssss
+                <strong>2</strong> x Ginger Indian[Net Weight +10gm] (আদা)/250
+                gm Ginger Indian[Net Weight +10gm] (আদা)/250 gm/
               </h3>
               <h1>$50</h1>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                margin: '1rem',
-                flexBasis: '80%',
-                padding: '2rem',
-              }}
-            >
+            <div className="order__body">
               <h3 style={{ fontWeight: 400 }}>
-                <strong>2</strong> x Something
-                ssssssssssssssssssssssssssssssssssssssssssss
+                <strong>2</strong> x Ginger Indian[Net Weight +10gm] (আদা)/250
+                gm Ginger Indian[Net Weight +10gm] (আদা)/250 gm/
               </h3>
               <h1>$50</h1>
             </div>
             <hr style={{ width: '80%' }} />
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                margin: '1rem',
-                flexBasis: '80%',
-                padding: '2rem',
-              }}
-            >
+            <div className="order__body">
               <div>
                 <h3 style={{ fontWeight: 400 }}>Sub Total</h3>
                 <h3 style={{ fontWeight: 400 }}>Delivery Fee</h3>
@@ -152,9 +104,12 @@ const Row = styled.div`
 
 const StyledSection = styled.section`
   display: flex;
-  flex-wrap: wrap;
   flex-basis: 100%;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+  }
 
   & .information {
     flex-basis: 25%;
@@ -163,9 +118,8 @@ const StyledSection = styled.section`
     flex-wrap: wrap;
     background: #f9f7f7;
     margin-top: 1rem;
-    min-height: 300px;
     align-items: center;
-
+    margin: 3rem auto;
     h1 {
       margin: 1rem;
       display: inline-block;
@@ -178,7 +132,7 @@ const StyledSection = styled.section`
       border-radius: 10px;
       background: #dbe2ef;
       border: none;
-      box-shadow: inset 4px 4px 4px rgba(255, 255, 255, 5);
+      box-shadow: 2px 2px 2px rgba(255, 255, 255, 5);
       p {
         margin: 0;
       }
@@ -192,11 +146,27 @@ const StyledSection = styled.section`
     background: #f9f7f7;
     margin-top: 1rem;
     max-width: 30%;
-
+    margin: 1rem auto;
     & .order__header {
       font-size: calc(16px + 0.6vw);
       margin-top: 3rem;
       text-align: center;
+    }
+
+    & .order__body {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem;
+      flex-basis: 80%;
+      padding: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      & .order__body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 `;

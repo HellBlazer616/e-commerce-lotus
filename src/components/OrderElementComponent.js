@@ -7,7 +7,7 @@ import { grey } from '../utils/Colors';
 
 const OrderElementComponent = () => {
   return (
-    <OrderElement>
+    <OrderElement className="order">
       <div className="order__button">
         <Button shape="circle" size="small" aria-valuetext="increase">
           +
@@ -25,12 +25,12 @@ const OrderElementComponent = () => {
         </Button>
       </div>
       <div className="order__image">
-        <img src="https://picsum.photos/500/500" alt="order" />
+        <img src="https://picsum.photos/150/150" alt="order" />
       </div>
       <div className="order__info">
         <span>
           <h3>
-            Ginger Indian[Net Weight +10gm] (আদা)/250 gm/>Ginger Indian[Net
+            Ginger Indian[Net Weight +10gm] (আদা)/250 gm Ginger Indian[Net
             Weight +10gm] (আদা)/250 gm/
           </h3>
           <h3>
@@ -39,19 +39,6 @@ const OrderElementComponent = () => {
         </span>
       </div>
       <div className="order__price">
-        {/* <h3>
-          <s>$50</s> <strong>$40</strong>
-        </h3> */}
-
-        {/* <Input
-          addonBefore="Quantity"
-          type="number"
-          id="quantity"
-          value={60}
-          // onChange={handleQuantity}
-          min="1"
-          step="0.5"
-        /> */}
         <h3>
           <strong>$3000</strong>
         </h3>

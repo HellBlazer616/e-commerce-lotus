@@ -13,6 +13,7 @@ import OrderDetails from './pages/OrderDetails';
 import { CartOpenProvider } from './CartOpenContext';
 import { CategoryProvider } from './context/CategoryContext';
 import { DeliveryProvider } from './context/DeliveryContext';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <ShowCart path="/cart" />
             <Account path="account/user" />
             <OrderDetails path="account/user/order" />
+            <Search path="search/:search" />
           </Router>
         </DeliveryProvider>
       </CartOpenProvider>

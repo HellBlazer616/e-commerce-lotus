@@ -14,12 +14,13 @@ const CartComponent = ({ visible, onClose }) => {
 
   return (
     <StyledDrawer
-      title="Place your order"
+      title="Your Orders"
       placement="right"
       closable
       onClose={onClose}
       visible={visible}
       width={width < 800 ? '100vw' : 650}
+      headerStyle={{ textAlign: 'center', marginTop: '1rem' }}
     >
       <OrderComponent />
       <OrderComponent />

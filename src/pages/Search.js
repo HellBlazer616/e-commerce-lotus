@@ -26,12 +26,12 @@ const Product = () => {
     async function getProduct() {
       if (
         localStorage.getItem(
-          `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`
+          `/api/search?${params.search}&sort=${sort}&sortOrder=${sortOrder}`
         )
       ) {
         const data = JSON.parse(
           localStorage.getItem(
-            `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`
+            `/api/search?${params.search}&sort=${sort}&sortOrder=${sortOrder}`
           )
         );
         setProducts(data);
@@ -40,17 +40,18 @@ const Product = () => {
       }
       setLoading(true);
       await fetch(
-        `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`,
+        `/api/search?${params.search}&sort=${sort}&sortOrder=${sortOrder}`,
         {
           method: 'GET',
         }
       ).then(async (response) => {
         const res = await response.json();
+        console.log(res.data);
         if (res.data) {
           console.log('fetched');
           setProducts(res.data);
           localStorage.setItem(
-            `/api/category/${params.productId}/product?recursive=true&sort=${sort}&sortOrder=${sortOrder}`,
+            `/api/search?${params.search}&sort=${sort}&sortOrder=${sortOrder}`,
             JSON.stringify(res.data)
           );
         }
@@ -59,7 +60,7 @@ const Product = () => {
 
     getProduct();
     setLoading(false);
-  }, [params.productId, sort, sortOrder]);
+  }, [params.search, sort, sortOrder]);
 
   return (
     <ProductComponent
@@ -69,6 +70,7 @@ const Product = () => {
       sortProducts={sortProducts}
       changeSortOrder={changeSortOrder}
     />
+    // <p>Search</p>
   );
 };
 
