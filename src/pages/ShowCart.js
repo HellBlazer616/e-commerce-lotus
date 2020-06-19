@@ -6,6 +6,7 @@ import OrderComponent from '../components/OrderComponent';
 import NavComponent from '../components/NavComponent';
 import FooterComponent from '../components/FooterComponent';
 import InfoDrawerComponent from '../components/InfoDrawerComponent';
+import HorizontalCardComponent from '../components/HorizontalCardComponent';
 
 const ShowCart = () => {
   const [visible, setVisible] = useState(false);

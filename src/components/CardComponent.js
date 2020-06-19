@@ -57,7 +57,7 @@ const CardComponent = ({ product }) => {
         onClick={cardOnClick}
         hoverable
         cover={
-          <LazyLoad height={200} offset={100}>
+          <LazyLoad height={200} offset={100} once>
             <img
               alt="example"
               src={`${process.env.REACT_APP_DOMAIN.concat(
@@ -269,6 +269,7 @@ const Article = styled.article`
 `;
 
 const StyledCard = styled(Card)`
+  box-shadow: 2px 2px 2px #d9d5d5;
   p {
     margin: auto;
   }

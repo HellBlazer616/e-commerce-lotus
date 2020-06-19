@@ -41,10 +41,9 @@ const CategoryShowcase = () => {
         <article className="content__category">
           {subCategories.map((subCategory) => {
             return (
-              <Link to={`/category/${subCategory._id}`}>
+              <Link key={subCategory._id} to={`/category/${subCategory._id}`}>
                 <Card
                   style={{ margin: '1rem', width: 200, height: 310 }}
-                  key={subCategory._id}
                   hoverable
                   onClick={handleCardClick}
                   data-key={subCategory._id}

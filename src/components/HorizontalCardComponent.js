@@ -1,33 +1,32 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
 import { lightSky } from '../utils/Colors';
 
-const HorizontalCardComponent = () => {
+const HorizontalCardComponent = ({ delivery }) => {
   return (
     <Info>
       <div className="info__wrapper">
         <section className="info__title">
           <button type="button">1</button>
-          <h1>Title of the Information</h1>
+          <h1>Delivery Details</h1>
         </section>
         <section className="info__description">
           <button type="button" className="info__button">
-            <h1>Title of the Information</h1>
+            {/* <h1>{delivery.name}</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex animi
-              omnis qui accusantium est veritatis rerum! Repudiandae nobis sequi
-              pariatur nesciunt doloribus. Minima, dolore molestiae porro in
-              itaque officiis ut!
-            </p>
-          </button>
-          <button type="button" className="info__button">
-            <h1>Title of the Information</h1>
+              <strong>City </strong>
+              {delivery?.city?.map((cityName) => {
+                return `${cityName}, `;
+              })}
+            </p>{' '}
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex animi
-              omnis qui accusantium est veritatis rerum! Repudiandae nobis sequi
-              pariatur nesciunt doloribus. Minima, dolore molestiae porro in
-              itaque officiis ut!
+              <strong>{delivery.name}</strong>
             </p>
+            <p>{delivery.countryName}</p>
+            <p>Charge: {JSON.stringify(delivery.charge)}</p>
+            <p>Pick Up Location: {delivery.pickUpLocation}</p>
+            <p>Estimated Time: {delivery.time}</p> */}
           </button>
         </section>
       </div>
@@ -41,7 +40,7 @@ const Info = styled.div`
   justify-content: space-between;
   margin: 1rem;
 
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25); */
 
   @media only screen and (max-width: 767px) {
     flex-direction: column;

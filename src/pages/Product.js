@@ -91,13 +91,12 @@ const Product = () => {
               <article className="head__sort">
                 <Select
                   showSearch
-                  style={{ width: 200, margin: '1rem' }}
                   placeholder="Select sorting category"
                   optionFilterProp="children"
                   onChange={sortProducts}
                 >
-                  <Option value="added">Sort by add</Option>
-                  <Option value="price">Sort by Price</Option>
+                  <Option value="added">Sort by date added</Option>
+                  <Option value="price">Sort by price</Option>
                 </Select>
                 <Radio.Group onChange={changeSortOrder} defaultValue={1}>
                   <Radio data-key={1} value={1}>
@@ -147,6 +146,7 @@ const Row = styled.main`
   flex-direction: column;
   flex-wrap: wrap;
   flex-basis: 100%;
+
   & .head {
     display: flex;
     flex-direction: column;
@@ -171,6 +171,8 @@ const Row = styled.main`
       h1 {
         color: #fff;
         margin: 0;
+        text-align: center;
+        font-size: calc(14px + 0.3vw);
       }
     }
 
@@ -183,11 +185,45 @@ const Row = styled.main`
     & .head__sort {
       flex-basis: 100%;
       display: flex;
-
+      flex-wrap: wrap;
       margin: 1rem;
       align-items: center;
       justify-content: space-between;
       margin: 1rem;
+      width: 200;
+      margin: '1rem';
+    }
+
+    @media (max-width: 700px) {
+      & .head__sort {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 400px) {
+      & .head__sort {
+        justify-content: center;
+
+        div:nth-of-type(2) {
+          display: flex;
+          flex-direction: column;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    @media (max-width: 300px) {
+      & .head__sort {
+        justify-content: center;
+
+        div:nth-of-type(1) {
+          width: 150px;
+        }
+        div:nth-of-type(2) {
+          display: flex;
+          flex-direction: column;
+        }
+      }
     }
   }
 

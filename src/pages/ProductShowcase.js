@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from '@reach/router';
 import styled from '@emotion/styled';
 import { Button, Rate } from 'antd';
+import ReactImageMagnify from 'react-image-magnify';
 import NavComponent from '../components/NavComponent';
 import ProductShowcaseCarousel from '../components/ProductShowcaseCarousel';
 import FooterComponent from '../components/FooterComponent';
@@ -59,11 +60,31 @@ const ProductShowcase = () => {
         return (
           <div className="product" key={value._id}>
             <div className="product__image">
-              <img
+              {/* <img
                 src={`${process.env.REACT_APP_DOMAIN.concat(
-                  value?.cover?.medium
+                  value.cover.medium
                 )}`}
                 alt="product pic"
+              /> */}
+              <ReactImageMagnify
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...{
+                  smallImage: {
+                    alt: 'Wristwatch by Ted Baker London',
+                    isFluidWidth: true,
+                    src: `${process.env.REACT_APP_DOMAIN.concat(
+                      value.cover.medium
+                    )}`,
+                  },
+                  largeImage: {
+                    src: `${process.env.REACT_APP_DOMAIN.concat(
+                      value.cover.original
+                    )}`,
+                    width: 1200,
+                    height: 1800,
+                  },
+                }}
+                enlargedImagePosition="over"
               />
             </div>
             <div className="product__info">
@@ -187,6 +208,9 @@ const Wrapper = styled.div`
 
       & .product__info__upper {
         flex-basis: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
       }
       & .product__info__lower {
         max-width: 90%;

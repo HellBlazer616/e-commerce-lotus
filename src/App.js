@@ -8,22 +8,29 @@ import Register from './pages/Register';
 import ProductShowCase from './pages/ProductShowcase';
 import ShowCart from './pages/ShowCart';
 import CategoryShowCase from './pages/CategoryShowcase';
+import Account from './pages/Account';
+import OrderDetails from './pages/OrderDetails';
 import { CartOpenProvider } from './CartOpenContext';
 import { CategoryProvider } from './context/CategoryContext';
+import { DeliveryProvider } from './context/DeliveryContext';
 
 function App() {
   return (
     <CategoryProvider>
       <CartOpenProvider>
-        <Router>
-          <Landing path="/" />
-          <Product path="/category/:productId" />
-          <ProductShowCase path="product/showcase/:productId" />
-          <CategoryShowCase path="category/showcase/:categoryId" />
-          <Register path="/register" />
-          <Login path="/login" />
-          <ShowCart path="/cart" />
-        </Router>
+        <DeliveryProvider>
+          <Router>
+            <Landing path="/" />
+            <Product path="/category/:productId" />
+            <ProductShowCase path="product/showcase/:productId" />
+            <CategoryShowCase path="category/showcase/:categoryId" />
+            <Register path="/register" />
+            <Login path="/login" />
+            <ShowCart path="/cart" />
+            <Account path="account/user" />
+            <OrderDetails path="account/user/order" />
+          </Router>
+        </DeliveryProvider>
       </CartOpenProvider>
     </CategoryProvider>
   );
