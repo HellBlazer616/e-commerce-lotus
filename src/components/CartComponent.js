@@ -27,9 +27,18 @@ const CartComponent = ({ visible, onClose }) => {
       <OrderComponent />
       <OrderComponent />
       <div className="order__checkout">
-        <h2>
-          <i>SubTotal: $10000</i>
-        </h2>
+        <span>
+          <h3 style={{ fontWeight: 400 }}>Sub Total</h3>
+          <h3>$500</h3>
+        </span>
+        <span>
+          <h3 style={{ fontWeight: 400 }}>Delivery Price</h3>
+          <h3>$50</h3>
+        </span>
+        <span>
+          <h3 style={{ fontWeight: 400 }}> Total</h3>
+          <h3>$550</h3>
+        </span>
       </div>
       <div className="order__buttons">
         <Button size="large" type="primary" onClick={redirectCart}>
@@ -70,11 +79,11 @@ const StyledDrawer = styled(Drawer)`
     margin-bottom: 3rem;
   }
   & .order__checkout {
-    display: flex;
-    align-self: flex-end;
-    margin: 1rem 4rem;
-    background: #2f2f2f;
     padding: 10px;
+    span {
+      display: flex;
+      justify-content: space-between;
+    }
     h2 {
       color: #fff;
     }

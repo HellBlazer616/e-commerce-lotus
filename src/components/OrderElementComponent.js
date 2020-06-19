@@ -9,7 +9,7 @@ const OrderElementComponent = () => {
   return (
     <OrderElement>
       <div className="order__button">
-        <Button shape="circle" size="small">
+        <Button shape="circle" size="small" aria-valuetext="increase">
           +
         </Button>
         <Button
@@ -20,7 +20,7 @@ const OrderElementComponent = () => {
         >
           20
         </Button>
-        <Button shape="circle" size="small">
+        <Button shape="circle" size="small" aria-valuetext="decrease">
           -
         </Button>
       </div>
@@ -30,7 +30,7 @@ const OrderElementComponent = () => {
       <div className="order__info">
         <span>
           <h3>
-            Ginger Indian[Net Weight +10gm] (আদা)/250 gm/ Ginger Indian[Net
+            Ginger Indian[Net Weight +10gm] (আদা)/250 gm/>Ginger Indian[Net
             Weight +10gm] (আদা)/250 gm/
           </h3>
           <h3>
@@ -53,7 +53,7 @@ const OrderElementComponent = () => {
           step="0.5"
         /> */}
         <h3>
-          <strong>60 x $50 = $3000</strong>
+          <strong>$3000</strong>
         </h3>
       </div>
       <div className="order__close">
@@ -74,17 +74,19 @@ const OrderElement = styled.div`
   border: 1px solid #dadce0;
   margin-bottom: 1rem;
   flex-basis: 100%;
-  font-size: 10px;
+  font-size: 16px;
 
   h3 {
     font-size: inherit;
   }
 
   @media only screen and (max-width: 1024px) {
+    font-size: 14px;
   }
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 400px) {
     /* flex-direction: column; */
+    font-size: 9px;
   }
 
   & .order__button {
@@ -118,7 +120,7 @@ const OrderElement = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2px;
+    padding: 10px;
     flex-grow: 2;
   }
 
