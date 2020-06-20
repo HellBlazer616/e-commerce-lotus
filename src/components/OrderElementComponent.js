@@ -131,6 +131,7 @@ const OrderElement = styled.div`
     padding: 10px;
     flex-grow: 1;
     flex-shrink: 0;
+    align-items: center;
   }
 
   & .order__close {

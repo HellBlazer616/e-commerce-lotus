@@ -155,12 +155,15 @@ const Wrapper = styled.div`
     & .order__checkout {
       order: 6;
       padding: 10px;
-      /* display: flex; */
-      /* align-items: flex-end;
-      flex-direction: column; */
+      display: flex;
+      align-self: flex-end;
+      flex-direction: column;
       span {
         display: flex;
         justify-content: space-between;
+        h3:nth-of-type(1) {
+          margin-right: 4rem;
+        }
       }
       h2 {
         color: #fff;
