@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useContext } from 'react';
 import {
   Menu,
@@ -16,6 +17,7 @@ import {
   CaretDownOutlined,
   ShoppingCartOutlined,
   UserOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
 import { RiMenu2Line } from 'react-icons/ri';
 import styled from '@emotion/styled';
@@ -64,6 +66,32 @@ const NavComponent = () => {
           </SubMenu>
           <SubMenu key="grocery" title="Grocery" icon={<CaretDownOutlined />}>
             {category.map((value) => {
+              if (value.subCategory.length >= 2) {
+                return (
+                  <SubMenu
+                    key={value._id}
+                    icon={<MailOutlined />}
+                    title={
+                      <Link
+                        style={{ color: 'inherit' }}
+                        to={`/category/showcase/${value._id}`}
+                      >
+                        {value.name}
+                      </Link>
+                    }
+                  >
+                    {value.subCategory.map((valueSub) => {
+                      return (
+                        <Menu.Item key={`${valueSub._id}`}>
+                          <Link to={`/category/${valueSub._id}`}>
+                            {valueSub.name}
+                          </Link>
+                        </Menu.Item>
+                      );
+                    })}
+                  </SubMenu>
+                );
+              }
               return (
                 <Menu.Item key={value._id} icon={<AppstoreOutlined />}>
                   <Link to={`/category/${value._id}`}>{value.name}</Link>
@@ -71,6 +99,7 @@ const NavComponent = () => {
               );
             })}
           </SubMenu>
+
           <Menu.Item key="cart" icon={<AppstoreOutlined />}>
             <Link to="/cart">Show Cart</Link>
           </Menu.Item>

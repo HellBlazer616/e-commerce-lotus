@@ -8,8 +8,10 @@ import Register from './pages/Register';
 import ProductShowCase from './pages/ProductShowcase';
 import ShowCart from './pages/ShowCart';
 import CategoryShowCase from './pages/CategoryShowcase';
-import Checkout from './pages/Checkout';
-import OrderDetails from './pages/OrderDetails';
+import AccountCheckout from './pages/AccountCheckout';
+import AccountOrderDetails from './pages/AccountOrderDetails';
+import AccountSettings from './pages/AccountSettings';
+import AccountWishList from './pages/AccountWishList';
 import { CartOpenProvider } from './CartOpenContext';
 import { CategoryProvider } from './context/CategoryContext';
 import { DeliveryProvider } from './context/DeliveryContext';
@@ -28,8 +30,10 @@ function App() {
             <Register path="/register" />
             <Login path="/login" />
             <ShowCart path="/cart" />
-            <Checkout path="account/user/checkout" />
-            <OrderDetails path="account/user/order" />
+            <AccountCheckout path="account/user/checkout" />
+            <AccountOrderDetails path="account/user/order" />
+            <AccountSettings path="account/user/settings" />
+            <AccountWishList path="account/user/wishlist" />
             <Search path="search/:search" />
           </Router>
         </DeliveryProvider>

@@ -7,7 +7,7 @@ import OrderDetailsInfo from '../components/OrderDetailsInfo';
 import OrderDetailsTable from '../components/OrderDetailsTable';
 import AccountNav from '../components/AccountNav';
 
-const Checkout = () => {
+const AccountCheckout = () => {
   return (
     <Wrapper>
       <NavComponent />
@@ -84,4 +84,4 @@ const Main = styled.main`
   }
 `;
 
-export default Checkout;
+export default AccountCheckout;
