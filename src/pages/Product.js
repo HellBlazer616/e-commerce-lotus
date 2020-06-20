@@ -7,7 +7,7 @@ const Product = () => {
   const { visible, setVisible } = useContext(CartOpenContext);
   const params = useParams();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState('false');
   const [sort, setSort] = useState('added');
   const [sortOrder, setSortOrder] = useState(1);
 
@@ -58,7 +58,6 @@ const Product = () => {
     }
 
     getProduct();
-    setLoading(false);
   }, [params.productId, sort, sortOrder]);
 
   return (

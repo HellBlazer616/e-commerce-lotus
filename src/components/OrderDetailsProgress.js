@@ -8,7 +8,7 @@ const { Step } = Steps;
 const OrderDetailsProgress = () => {
   const { width } = useWindowDimension();
   return (
-    <article className="order__details__progress">
+    <OrderDetailsProgressItem className="order__details__progress">
       <Steps
         className="order__details__steps"
         direction={width < 800 ? 'vertical' : 'horizontal'}
@@ -22,10 +22,10 @@ const OrderDetailsProgress = () => {
         />
         <Step title="Waiting" description="Order Delivered" />
       </Steps>
-    </article>
+    </OrderDetailsProgressItem>
   );
 };
 
-const OrderDetailsProgressItem = styled``;
+const OrderDetailsProgressItem = styled.article``;
 
 export default OrderDetailsProgress;

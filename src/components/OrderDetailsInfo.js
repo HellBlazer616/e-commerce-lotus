@@ -41,6 +41,7 @@ const OrderDetailsAddress = styled.article`
   & .order__details__price {
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
     span {
       display: flex;
       justify-content: space-between;

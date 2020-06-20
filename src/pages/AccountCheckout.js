@@ -1,13 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
 import NavComponent from '../components/NavComponent';
 import SmallCardItem from '../components/SmallCardItem';
 import OrderDetailsInfo from '../components/OrderDetailsInfo';
 import OrderDetailsTable from '../components/OrderDetailsTable';
 import AccountNav from '../components/AccountNav';
+import { DeliveryContext } from '../context/DeliveryContext';
+import HigherOrderDeliveryCard from '../components/HigherOrderDeliveryCard';
 
 const AccountCheckout = () => {
+  const { delivery } = useContext(DeliveryContext);
+  const [deliveryMethod, setDeliveryMethod] = useState('');
+
   return (
     <Wrapper>
       <NavComponent />
@@ -15,11 +20,18 @@ const AccountCheckout = () => {
         <AccountNav />
         <div className="order">
           <section className="order__list">
-            <h2 style={{ marginLeft: '1rem' }}>My Orders</h2>
+            <h2 style={{ marginLeft: '1rem' }}>Drop Location</h2>
             <hr />
-            <SmallCardItem />
-            <SmallCardItem />
-            <SmallCardItem />
+
+            {delivery.map((value, index) => {
+              return (
+                <HigherOrderDeliveryCard
+                  value={value}
+                  setDeliveryMethod={setDeliveryMethod}
+                  index={index}
+                />
+              );
+            })}
           </section>
           <section className="order__details">
             <h2 style={{ margin: '1rem rem' }}>Order Details</h2>

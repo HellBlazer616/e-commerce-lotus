@@ -103,6 +103,9 @@ const NavComponent = () => {
           <Menu.Item key="cart" icon={<AppstoreOutlined />}>
             <Link to="/cart">Show Cart</Link>
           </Menu.Item>
+          <Menu.Item key="account" icon={<AppstoreOutlined />}>
+            <Link to="/account/user/checkout">Account</Link>
+          </Menu.Item>
         </StyledMenu>
 
         <div className="bottom-nav">

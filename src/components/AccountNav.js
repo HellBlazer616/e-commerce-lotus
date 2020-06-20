@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { Breadcrumb, Menu } from 'antd';
@@ -27,13 +26,13 @@ const AccountNav = () => {
           <Link to="/account/user/order">Order</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to="#">Need Help</Link>
+          <Link to="/account/user/help">Need Help</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to="#">Account</Link>
+          <Link to="/account/user/settings">Account</Link>
         </Breadcrumb.Item>
         <Breadcrumb.Item>
-          <Link to="#">Wishlist</Link>
+          <Link to="/account/user/wishlist">Wishlist</Link>
         </Breadcrumb.Item>
       </Breadcrumb>
       <Menu
@@ -48,9 +47,15 @@ const AccountNav = () => {
         <Menu.Item key="1">
           <Link to="/account/user/order">Order</Link>
         </Menu.Item>
-        <Menu.Item key="2">Need Help</Menu.Item>
-        <Menu.Item key="3">Account</Menu.Item>
-        <Menu.Item key="4">WishList</Menu.Item>
+        <Menu.Item key="2">
+          <Link to="/account/user/help">Need Help</Link>
+        </Menu.Item>
+        <Menu.Item key="3">
+          <Link to="/account/user/settings">Account</Link>
+        </Menu.Item>
+        <Menu.Item key="4">
+          <Link to="/account/user/wishlist">Wishlist</Link>
+        </Menu.Item>
       </Menu>
     </Nav>
   );
