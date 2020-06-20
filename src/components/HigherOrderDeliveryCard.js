@@ -3,15 +3,27 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const HigherOrderDeliveryCard = ({ value, index, setDeliveryMethod }) => {
+const HigherOrderDeliveryCard = ({
+  value,
+  index,
+  setDeliveryMethod,
+  deliveryMethod,
+}) => {
   const chargeLimit = Object.keys(value.charge);
   const charge = Object.values(value.charge);
 
   const handleClick = () => {
-    setDeliveryMethod(value._id);
+    setDeliveryMethod(index);
   };
   return (
-    <Article onClick={handleClick} onKeyDown={handleClick}>
+    <Article
+      onClick={handleClick}
+      onKeyDown={handleClick}
+      style={{
+        border: `${deliveryMethod === index ? '2px solid #52c41a' : 'none'}`,
+      }}
+      selected={`${deliveryMethod === index}`}
+    >
       <span className="order__list__item__head">
         <h3 className="order__list__item--tag">Delivery Method #{index + 1}</h3>
         <div className="order__list__item--info">

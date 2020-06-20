@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
+import { Button } from 'antd';
 import NavComponent from '../components/NavComponent';
-import SmallCardItem from '../components/SmallCardItem';
+import OrderDetailsMethod from '../components/OrderDetailsMethod';
 import OrderDetailsInfo from '../components/OrderDetailsInfo';
 import OrderDetailsTable from '../components/OrderDetailsTable';
 import AccountNav from '../components/AccountNav';
@@ -26,8 +27,10 @@ const AccountCheckout = () => {
             {delivery.map((value, index) => {
               return (
                 <HigherOrderDeliveryCard
+                  key={value._id}
                   value={value}
                   setDeliveryMethod={setDeliveryMethod}
+                  deliveryMethod={deliveryMethod}
                   index={index}
                 />
               );
@@ -37,7 +40,23 @@ const AccountCheckout = () => {
             <h2 style={{ margin: '1rem rem' }}>Order Details</h2>
             <hr />
             <OrderDetailsInfo />
+            {/* <OrderDetailsMethod /> */}
+            {deliveryMethod !== '' ? (
+              <h2 style={{ margin: '1rem' }}>
+                Delivery Method #{deliveryMethod + 1}
+              </h2>
+            ) : (
+              <h2 style={{ margin: '1rem' }}>Choose A Delivery Method </h2>
+            )}
             <OrderDetailsTable />
+            <Button
+              size="large"
+              type="primary"
+              style={{ marginTop: '1rem' }}
+              block
+            >
+              Submit Order
+            </Button>
           </section>
         </div>
       </Main>

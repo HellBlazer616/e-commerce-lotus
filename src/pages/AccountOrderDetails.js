@@ -7,6 +7,7 @@ import OrderDetailsInfo from '../components/OrderDetailsInfo';
 import OrderDetailsProgress from '../components/OrderDetailsProgress';
 import OrderDetailsTable from '../components/OrderDetailsTable';
 import AccountNav from '../components/AccountNav';
+import HigherOrderOrderCard from '../components/HigherOrderOrderCard';
 
 const OrderDetails = () => {
   return (
@@ -18,9 +19,13 @@ const OrderDetails = () => {
           <section className="order__list">
             <h2 style={{ marginLeft: '1rem' }}>My Orders</h2>
             <hr />
-            <SmallCardItem />
-            <SmallCardItem />
-            <SmallCardItem />
+            <HigherOrderOrderCard />
+            <HigherOrderOrderCard />
+            <HigherOrderOrderCard />
+            <HigherOrderOrderCard />
+            <HigherOrderOrderCard />
+            <HigherOrderOrderCard />
+            <HigherOrderOrderCard />
           </section>
           <section className="order__details">
             <h2 style={{ margin: '1rem rem' }}>Order Details</h2>
@@ -72,6 +77,8 @@ const Main = styled.main`
       display: flex;
       flex-direction: column;
       padding: 0 1rem;
+      max-height: 70vh;
+      overflow-y: auto;
     }
 
     & .order__details {

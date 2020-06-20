@@ -2,30 +2,30 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const HigherOrderOrderCard = ({ delivery }) => {
+  const handleClick = (e) => {
+    console.log('clicked');
+  };
+
   return (
-    <Article>
+    <Article onClick={handleClick} onKeyDown={handleClick}>
       <span className="order__list__item__head">
-        <h3 className="order__list__item--tag">
-          {type === 'delivery' ? 'Delivery Method  ' : 'Order'}#{index}
-        </h3>
+        <h3 className="order__list__item--tag">Order #index</h3>
         <div className="order__list__item--info">
-          <h3>
-            {type === 'delivery' ? 'Delivery Location  ' : 'Order on the way'}
-          </h3>
+          <h3>Order on the way</h3>
         </div>
       </span>
       <hr />
       <div className="order__list__item__body">
         <span>
-          <h3>{type === 'delivery' ? 'Covered City  ' : 'Order Time'}</h3>{' '}
+          <h3> Order Time</h3>
           <h3>7th April 2019</h3>
         </span>
         <span>
-          <h3>{type === 'delivery' ? 'Delivery Time  ' : 'Order Time'}</h3>{' '}
+          <h3> Order Time</h3>
           <h3>13th April</h3>
         </span>
         <span>
-          <h3>{type === 'delivery' ? 'Charge  ' : 'Total Price'}</h3>
+          <h3>Total Price</h3>
           <h3>$339</h3>
         </span>
       </div>
@@ -39,6 +39,16 @@ const Article = styled.article`
   justify-content: space-between;
   min-height: 180px;
   max-width: 350px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+
+  :hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  :active {
+    outline: 2px solid #52c41a;
+  }
 
   & .order__list__item--tag {
   }
