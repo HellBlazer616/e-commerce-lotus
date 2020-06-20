@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table } from 'antd';
-import styled from '@emotion/styled';
 
 const OrderDetailsTable = () => {
   const columns = [
@@ -53,20 +52,15 @@ const OrderDetailsTable = () => {
   ];
 
   return (
-    <OrderDetailsList className="order__details__list">
+    <article className="order__details__list">
       <Table
         className="order__details__list__table"
         pagination={false}
         columns={columns}
         dataSource={data}
       />
-    </OrderDetailsList>
+    </article>
   );
 };
-
-const OrderDetailsList = styled.article`
-  & .order__details__list__table {
-  }
-`;
 
 export default OrderDetailsTable;

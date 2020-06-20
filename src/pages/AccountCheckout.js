@@ -48,6 +48,7 @@ const AccountCheckout = () => {
             ) : (
               <h2 style={{ margin: '1rem 0' }}>Choose A Delivery Method </h2>
             )}
+            {/* table here */}
             <OrderDetailsTable />
             <Button
               size="large"
