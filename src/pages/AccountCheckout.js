@@ -42,11 +42,11 @@ const AccountCheckout = () => {
             <OrderDetailsInfo />
             {/* <OrderDetailsMethod /> */}
             {deliveryMethod !== '' ? (
-              <h2 style={{ margin: '1rem' }}>
+              <h2 style={{ margin: '1rem 0' }}>
                 Delivery Method #{deliveryMethod + 1}
               </h2>
             ) : (
-              <h2 style={{ margin: '1rem' }}>Choose A Delivery Method </h2>
+              <h2 style={{ margin: '1rem 0' }}>Choose A Delivery Method </h2>
             )}
             <OrderDetailsTable />
             <Button

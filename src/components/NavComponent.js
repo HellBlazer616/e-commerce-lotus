@@ -63,6 +63,9 @@ const NavComponent = () => {
             <Menu.Item key="login" icon={<AppstoreOutlined />}>
               <Link to="/login">Login</Link>
             </Menu.Item>
+            <Menu.Item key="setting" icon={<AppstoreOutlined />}>
+              <Link to="/account/user/settings">Setting</Link>
+            </Menu.Item>
           </SubMenu>
           <SubMenu key="grocery" title="Grocery" icon={<CaretDownOutlined />}>
             {category.map((value) => {
@@ -104,7 +107,7 @@ const NavComponent = () => {
             <Link to="/cart">Show Cart</Link>
           </Menu.Item>
           <Menu.Item key="account" icon={<AppstoreOutlined />}>
-            <Link to="/account/user/checkout">Account</Link>
+            <Link to="/account/user/checkout">Checkout</Link>
           </Menu.Item>
         </StyledMenu>
 

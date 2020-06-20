@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { navigate } from '@reach/router';
 // import { useAlert } from 'react-alert';
 import { grey } from '../utils/Colors';
-import registerSvg from '../utils/assets/registerSvg.svg';
+import reset from '../utils/assets/reset.svg';
 import { Log, Content } from '../components/FormComponent';
 
 const Register = () => {
@@ -46,76 +46,8 @@ const Register = () => {
     <Wrapper>
       <StyledLog>
         <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
-          <h1>Sign up</h1>
-          <section className="form-group">
-            <label htmlFor="firstName">
-              First Name
-              <input
-                type="text"
-                name="firstName"
-                ref={register({
-                  required: 'You must specify an name',
-                  minLength: {
-                    value: 3,
-                    message: 'The name must be 3 characters or more',
-                  },
-                })}
-              />
-              {errors.firstName && (
-                <p className="error">{errors.firstName.message}</p>
-              )}
-            </label>
+          <h1>Reset Password</h1>
 
-            <label htmlFor="lastName">
-              Last Name
-              <input
-                type="text"
-                name="lastName"
-                ref={register({
-                  required: 'You must specify an name',
-                  minLength: {
-                    value: 3,
-                    message: 'The name must be 3 characters or more',
-                  },
-                })}
-              />
-              {errors.lastName && (
-                <p className="error">{errors.lastName.message}</p>
-              )}
-            </label>
-          </section>
-          <section className="form-group">
-            <label htmlFor="country">
-              Country
-              <select
-                name="country"
-                id="country"
-                defaultValue="Bangladesh"
-                ref={register()}
-              >
-                <option>Bangladesh</option>
-                <option>Apples</option>
-                <option>Bananas</option>
-                <option>Grapes</option>
-                <option>Oranges</option>
-              </select>
-            </label>
-            <label htmlFor="city">
-              City
-              <select
-                name="city"
-                id="city"
-                defaultValue="Country"
-                ref={register()}
-              >
-                <option>Dhaka</option>
-                <option>Apples</option>
-                <option>Bananas</option>
-                <option>Grapes</option>
-                <option>Oranges</option>
-              </select>
-            </label>
-          </section>
           <section className="form-group">
             <label htmlFor="password">
               Password
@@ -166,25 +98,12 @@ const Register = () => {
               )}
             </label>
           </section>
-          <section className="form-group">
-            <label htmlFor="phone">
-              Phone
-              <input
-                type="text"
-                name="phone"
-                ref={register({
-                  minLength: 7,
-                  required: 'You must specify a valid phone number',
-                })}
-              />
-              {errors.phone && <p className="error">{errors.phone.message}</p>}
-            </label>
-          </section>
+
           <input className="submit" type="submit" />
         </form>
       </StyledLog>
       <Content>
-        <img src={registerSvg} alt="logging" />
+        <img src={reset} alt="logging" />
       </Content>
     </Wrapper>
   );

@@ -61,7 +61,7 @@ const AccountNav = () => {
   );
 };
 
-const Nav = styled.nav`
+const Nav = styled.aside`
   & .mobile {
     display: none;
   }

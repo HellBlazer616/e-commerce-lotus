@@ -20,14 +20,21 @@ const HigherOrderDeliveryCard = ({
       onClick={handleClick}
       onKeyDown={handleClick}
       style={{
-        border: `${deliveryMethod === index ? '2px solid #52c41a' : 'none'}`,
+        border: `${deliveryMethod === index ? '2px solid #1890ff' : 'none'}`,
+        boxShadow: `${
+          deliveryMethod === index
+            ? '6px 6px 6px rgba(0, 0, 0, 0.25);'
+            : '2px 2px 2px rgba(0, 0, 0, 0.25);'
+        }`,
       }}
       selected={`${deliveryMethod === index}`}
     >
       <span className="order__list__item__head">
         <h3 className="order__list__item--tag">Delivery Method #{index + 1}</h3>
         <div className="order__list__item--info">
-          <h3>{value.pickUpLocation}</h3>
+          <span>
+            <h3>{value.pickUpLocation}</h3>
+          </span>
         </div>
       </span>
       <hr />
@@ -72,7 +79,7 @@ const Article = styled.article`
   }
 
   :active {
-    outline: 2px solid #52c41a;
+    outline: 2px solid #1890ff;
   }
 
   & .order__list__item--tag {

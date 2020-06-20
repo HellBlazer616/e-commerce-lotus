@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { navigate } from '@reach/router';
 // import { useAlert } from 'react-alert';
 import { grey } from '../utils/Colors';
-import registerSvg from '../utils/assets/registerSvg.svg';
+import update from '../utils/assets/update.svg';
 import { Log, Content } from '../components/FormComponent';
 
-const Register = () => {
+const UpdateAccount = () => {
   const { register, handleSubmit, errors, getValues } = useForm({});
   const [formData, setFormData] = useState('');
 
@@ -23,30 +23,30 @@ const Register = () => {
     console.log('served');
   };
 
-  useEffect(() => {
-    if (formData === '') return;
-    async function setData(payload) {
-      await fetch('customer/api/auth/register', {
-        method: 'POST',
+  // useEffect(() => {
+  //   if (formData === '') return;
+  //   async function setData(payload) {
+  //     await fetch('customer/api/auth/register', {
+  //       method: 'POST',
 
-        body: payload,
-      }).then(async (response) => {
-        console.log(response);
-        const res = await response.json();
-        if (res.msg === 'User created!') {
-          console.log('Created');
-          setFormData('');
-        }
-      });
-    }
-    setData(formData);
-  }, [formData]);
+  //       body: payload,
+  //     }).then(async (response) => {
+  //       console.log(response);
+  //       const res = await response.json();
+  //       if (res.msg === 'User created!') {
+  //         console.log('Created');
+  //         setFormData('');
+  //       }
+  //     });
+  //   }
+  //   setData(formData);
+  // }, [formData]);
 
   return (
     <Wrapper>
       <StyledLog>
         <form className="form-control" onSubmit={handleSubmit(onSubmit)}>
-          <h1>Sign up</h1>
+          <h1>Update Account</h1>
           <section className="form-group">
             <label htmlFor="firstName">
               First Name
@@ -116,56 +116,7 @@ const Register = () => {
               </select>
             </label>
           </section>
-          <section className="form-group">
-            <label htmlFor="password">
-              Password
-              <input
-                type="password"
-                name="password"
-                ref={register({
-                  required: 'You must specify a password',
-                  minLength: {
-                    value: 6,
-                    message: 'The password must be 6 characters or more',
-                  },
-                  validate: (value) => {
-                    const message =
-                      'Password must contain at least one letter, at least one number, and be longer than six characters';
-                    const regex = /^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$/i;
-                    if (regex.test(value)) {
-                      return true;
-                    }
-                    return message;
-                  },
-                })}
-              />
-              {errors.password && (
-                <p className="error">{errors.password.message}</p>
-              )}
-            </label>
 
-            <label htmlFor="password2">
-              Confirm Password
-              <input
-                type="password"
-                name="password2"
-                ref={register({
-                  required: 'You must specify the confirm Password',
-
-                  validate: (value) => {
-                    const message =
-                      'confirm password do not match the password';
-                    const password = getValues('password');
-                    if (value === password) return true;
-                    return message;
-                  },
-                })}
-              />
-              {errors.password2 && (
-                <p className="error">{errors.password2.message}</p>
-              )}
-            </label>
-          </section>
           <section className="form-group">
             <label htmlFor="phone">
               Phone
@@ -184,7 +135,7 @@ const Register = () => {
         </form>
       </StyledLog>
       <Content>
-        <img src={registerSvg} alt="logging" />
+        <img src={update} alt="update " />
       </Content>
     </Wrapper>
   );
@@ -209,4 +160,4 @@ const StyledLog = styled(Log)`
   }
 `;
 
-export default Register;
+export default UpdateAccount;

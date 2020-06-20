@@ -12,6 +12,8 @@ import AccountCheckout from './pages/AccountCheckout';
 import AccountOrderDetails from './pages/AccountOrderDetails';
 import AccountSettings from './pages/AccountSettings';
 import AccountWishList from './pages/AccountWishList';
+import UpdateAccount from './pages/UpdateAccount';
+import ChangePassword from './pages/ChangePassword';
 import { CartOpenProvider } from './CartOpenContext';
 import { CategoryProvider } from './context/CategoryContext';
 import { DeliveryProvider } from './context/DeliveryContext';
@@ -34,6 +36,8 @@ function App() {
             <AccountOrderDetails path="account/user/order" />
             <AccountSettings path="account/user/settings" />
             <AccountWishList path="account/user/wishlist" />
+            <UpdateAccount path="account/user/update" />
+            <ChangePassword path="account/user/password/reset" />
             <Search path="search/:search" />
           </Router>
         </DeliveryProvider>
