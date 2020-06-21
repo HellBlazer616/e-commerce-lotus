@@ -26,7 +26,7 @@ const Register = () => {
   useEffect(() => {
     if (formData === '') return;
     async function setData(payload) {
-      await fetch('customer/api/auth/register', {
+      await fetch('https://homebazarshibchar.com/customer/api/auth/register', {
         method: 'POST',
 
         body: payload,

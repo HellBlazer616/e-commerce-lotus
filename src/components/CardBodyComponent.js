@@ -1,42 +1,50 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Tooltip } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import styled from '@emotion/styled';
+import colors from '../utils/Colors';
 
 const CardBodyComponent = ({ product }) => {
   return (
     <section style={{}}>
-      <article>
+      <Article>
         <p
           style={{
             overflow: 'hidden',
             whiteSpace: 'nowrap',
             textOverflow: 'ellipsis',
+            padding: '16px 24px',
+            fontWeight: '700',
           }}
         >
           {product.name}
         </p>
-        {product.price.offer === '' ? (
-          <h2 style={{ color: '#52c41a' }}>{`৳ ${product.price.regular}`}</h2>
-        ) : (
-          <>
-            <h2>
-              <s style={{ color: '#52c41a' }}>{`৳${product.price.regular} `}</s>
-              <span
-                style={{ color: '#f5222d' }}
-              >{` ৳${product.price.offer}`}</span>
-            </h2>
-          </>
-        )}
-        {/* <StyledButton
-          size="large"
-          block
-          icon={<ShoppingCartOutlined style={{ fontSize: '2rem' }} />}
-        >
-          Add to Cart
-        </StyledButton> */}
-      </article>
+
+        <span>
+          {product.price.offer === '' ? (
+            <h3
+              style={{ color: `${colors.primary600}`, padding: '16px 24px' }}
+            >{`৳ ${product.price.regular}`}</h3>
+          ) : (
+            <>
+              <h3 style={{ padding: '16px 24px' }}>
+                <s
+                  style={{ color: `${colors.contrast}`, fontSize: '14px' }}
+                >{`৳${product.price.regular} `}</s>
+                <span
+                  style={{ color: `${colors.primary600}` }}
+                >{` ৳${product.price.offer}`}</span>
+              </h3>
+            </>
+          )}
+          <Tooltip title="Add to cart" placement="bottom">
+            <StyledButton data-key="cart" size="large">
+              <ShoppingCartIcon style={{ pointerEvents: 'none' }} /> Cart
+            </StyledButton>
+          </Tooltip>
+        </span>
+      </Article>
 
       {/* <section
         style={{
@@ -73,17 +81,33 @@ const CardBodyComponent = ({ product }) => {
 };
 
 const StyledButton = styled(Button)`
+  border: none;
+  float: right;
+
+  border-radius: 18px;
   display: flex;
-  flex-basis: 100%;
-  justify-content: center;
   align-items: center;
-  padding: 5px;
-  transition: all 0.2s ease;
-  color: #1890ff;
+  color: #009e7f;
+  float: right;
 
   :hover {
-    background: #1890ff;
+    background: #009e7f;
     color: #fff;
+  }
+  border: 2px solid rgb(247, 247, 247);
+`;
+const ShoppingCartIcon = styled(ShoppingCartOutlined)`
+  font-size: 24px;
+  :hover {
+    color: #fff;
+  }
+`;
+
+const Article = styled.article`
+  span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 

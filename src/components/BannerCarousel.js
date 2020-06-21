@@ -7,10 +7,10 @@ const BannerCarousel = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     className: 'resize',
-    autoplay: true,
+    autoplay: false,
     arrows: true,
     dots: false,
     swipeToSlide: true,
@@ -21,8 +21,8 @@ const BannerCarousel = () => {
       {
         breakpoint: 1820,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -30,8 +30,8 @@ const BannerCarousel = () => {
       {
         breakpoint: 1453,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -39,8 +39,8 @@ const BannerCarousel = () => {
       {
         breakpoint: 1230,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           initialSlide: 1,
         },
       },
@@ -67,31 +67,31 @@ const BannerCarousel = () => {
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Carousel {...settings}>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
         <div type="button">
-          <img src="https://picsum.photos/300/150" alt="carousel pic" />
+          <img src="https://picsum.photos/1920/250" alt="carousel pic" />
         </div>
       </Carousel>
     </Wrapper>
@@ -102,7 +102,7 @@ const Wrapper = styled.div`
   margin-top: 1rem;
 
   & .resize {
-    width: 85vw;
+    width: 86vw;
     height: 200px;
     overflow: hidden;
     margin: auto;

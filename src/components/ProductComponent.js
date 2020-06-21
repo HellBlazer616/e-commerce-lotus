@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from '@emotion/styled';
-import { BackTop, Result, Skeleton, Select, Radio } from 'antd';
+import { BackTop, Result, Skeleton, Select, Radio, Modal } from 'antd';
+import { useState } from 'react';
 import AsideMenuComponent from './AsideMenuComponent';
 import NavComponent from './NavComponent';
 import CardComponent from './CardComponent';
 import BannerCarousel from './BannerCarousel';
+import colors from '../utils/Colors';
 
 const { Option } = Select;
 const ProductComponent = ({
@@ -15,12 +17,36 @@ const ProductComponent = ({
   sortProducts,
   changeSortOrder,
 }) => {
+  const [visibleModal, setVisibleModal] = useState(false);
+
+  const handleOk = () => {
+    setVisibleModal(false);
+  };
+  const handleCancel = () => {
+    setVisibleModal(false);
+  };
+
+  const handleModalOpen = (e) => {
+    if (e.target.dataset.key === 'cart') return;
+    setVisibleModal(!visible);
+  };
+
   return (
     <Wrapper>
       <NavComponent visible={visible} setVisible={setVisible} />
       <Content>
         <AsideMenuComponent />
         <Row>
+          <Modal
+            title="Basic Modal"
+            visible={visibleModal}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </Modal>
           <section className="head">
             <article className="head__banner">
               <BannerCarousel />
@@ -70,7 +96,13 @@ const ProductComponent = ({
             ) : (
               products.map((product) => {
                 // eslint-disable-next-line no-underscore-dangle
-                return <CardComponent key={product._id} product={product} />;
+                return (
+                  <CardComponent
+                    key={product._id}
+                    product={product}
+                    handleModalOpen={handleModalOpen}
+                  />
+                );
               })
             )}
           </section>
@@ -84,7 +116,8 @@ const ProductComponent = ({
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  background: #eeeeee;
+  background: ${colors.background};
+  color: ${colors.colorOne};
 `;
 
 const Content = styled.div`
@@ -110,7 +143,7 @@ const Row = styled.main`
     }
 
     & .head__category {
-      background: #52c41a;
+      background: ${colors.primary600};
       height: auto;
       margin: auto;
       width: 54%;
